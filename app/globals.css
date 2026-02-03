@@ -1,26 +1,256 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --background-elevated: #0a0a0a;
+  --aurora-cyan: #22d3ee;
+  --aurora-purple: #a855f7;
+  --aurora-pink: #ec4899;
+  --aurora-green: #10b981;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #52525b;
+  --border: #27272a;
+
+  /* Button colors */
+  --btn-navy: #1e3a5f;
+  --btn-bordeaux: #722f37;
+  --btn-golden: #b8860b;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background-elevated: var(--background-elevated);
+  --color-aurora-cyan: var(--aurora-cyan);
+  --color-aurora-purple: var(--aurora-purple);
+  --color-aurora-pink: var(--aurora-pink);
+  --color-aurora-green: var(--aurora-green);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-btn-navy: var(--btn-navy);
+  --color-btn-bordeaux: var(--btn-bordeaux);
+  --color-btn-golden: var(--btn-golden);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #000000;
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Main gradient text - Navy/Bordeaux/Golden */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    #4a7cb5 0%,
+    #a85462 40%,
+    #d4a847 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(
+    135deg,
+    #722f37 0%,
+    #b8860b 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-cool {
+  background: linear-gradient(
+    135deg,
+    #1e3a5f 0%,
+    #4a7cb5 50%,
+    #a85462 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Accent colors */
+.text-navy {
+  color: #4a7cb5;
+}
+
+.text-bordeaux {
+  color: #a85462;
+}
+
+.text-golden {
+  color: #d4a847;
+}
+
+/* Aurora glow effects */
+.aurora-glow {
+  box-shadow:
+    0 0 20px rgba(34, 211, 238, 0.1),
+    0 0 40px rgba(168, 85, 247, 0.08),
+    0 0 60px rgba(236, 72, 153, 0.05);
+}
+
+.aurora-glow-strong {
+  box-shadow:
+    0 0 30px rgba(34, 211, 238, 0.2),
+    0 0 60px rgba(168, 85, 247, 0.12),
+    0 0 90px rgba(236, 72, 153, 0.08);
+}
+
+.aurora-border {
+  border: 1px solid transparent;
+  background: linear-gradient(#000, #000) padding-box,
+    linear-gradient(135deg, rgba(34, 211, 238, 0.4), rgba(168, 85, 247, 0.4), rgba(236, 72, 153, 0.4)) border-box;
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+/* Subtle pulse for aurora elements */
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+.aurora-pulse {
+  animation: aurora-pulse 4s ease-in-out infinite;
+}
+
+/* Code block styling */
+.code-block {
+  background: #050505;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-mono), monospace;
+}
+
+/* Syntax highlighting */
+.syntax-added {
+  color: var(--aurora-green);
+}
+
+.syntax-removed {
+  color: #f87171;
+}
+
+.syntax-keyword {
+  color: var(--aurora-purple);
+}
+
+.syntax-string {
+  color: var(--aurora-cyan);
+}
+
+.syntax-comment {
+  color: var(--text-muted);
+}
+
+.syntax-function {
+  color: var(--aurora-pink);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Button styles - Navy/Bordeaux/Golden gradient */
+.btn-primary {
+  background: linear-gradient(135deg, var(--btn-navy) 0%, var(--btn-bordeaux) 50%, var(--btn-golden) 100%);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(184, 134, 11, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 0 25px rgba(30, 58, 95, 0.4),
+    0 0 50px rgba(114, 47, 55, 0.3),
+    0 0 75px rgba(184, 134, 11, 0.2);
+  border-color: rgba(184, 134, 11, 0.5);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: rgba(184, 134, 11, 0.4);
+  box-shadow: 0 0 20px rgba(184, 134, 11, 0.1);
+}
+
+/* Feature accent bars */
+.accent-bar-purple {
+  background: var(--aurora-purple);
+}
+
+.accent-bar-cyan {
+  background: var(--aurora-cyan);
+}
+
+.accent-bar-pink {
+  background: var(--aurora-pink);
+}
+
+/* White button with golden glow */
+.btn-white {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+  color: var(--btn-bordeaux);
+  font-weight: 600;
+  border: 1px solid rgba(184, 134, 11, 0.2);
+}
+
+.btn-white:hover {
+  box-shadow:
+    0 0 30px rgba(184, 134, 11, 0.3),
+    0 0 60px rgba(114, 47, 55, 0.15);
 }
