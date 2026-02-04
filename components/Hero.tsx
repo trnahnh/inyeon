@@ -69,7 +69,7 @@ export default function Hero() {
         {/* Signature quote - very subtle */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-600 italic text-xs sm:text-sm mb-6 sm:mb-8 md:mb-12 px-2"
+          className="text-zinc-600 italic text-lg sm:text-sm mb-6 sm:mb-8 md:mb-12 px-2"
         >
           &ldquo;You are Daniel Craig but life owes you a Vesper Lynd?&rdquo;
         </motion.p>
