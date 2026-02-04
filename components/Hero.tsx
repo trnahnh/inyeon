@@ -35,9 +35,9 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6">
+    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 py-12">
       <motion.div
-        className="text-center max-w-3xl mx-auto"
+        className="text-center w-full max-w-3xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -45,7 +45,7 @@ export default function Hero() {
         {/* Korean text - subtle */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-600 text-sm tracking-[0.3em] uppercase mb-8"
+          className="text-zinc-600 text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase mb-4 sm:mb-6 md:mb-8"
         >
           &#51064;&#50672;
         </motion.p>
@@ -53,7 +53,7 @@ export default function Hero() {
         {/* Main heading */}
         <motion.h1
           variants={itemVariants}
-          className="text-6xl md:text-8xl font-bold mb-6 tracking-tight"
+          className="text-4xl sm:text-5xl md:text-8xl font-bold mb-4 sm:mb-6 tracking-tight"
         >
           <span className="gradient-text">Inyeon</span>
         </motion.h1>
@@ -61,7 +61,7 @@ export default function Hero() {
         {/* Tagline - minimal */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-300 text-lg md:text-xl mb-4"
+          className="text-zinc-300 text-base sm:text-lg md:text-xl mb-3 sm:mb-4"
         >
           Your Agentic AI Git Companion
         </motion.p>
@@ -69,7 +69,7 @@ export default function Hero() {
         {/* Signature quote - very subtle */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-600 italic text-sm mb-12"
+          className="text-zinc-600 italic text-xs sm:text-sm mb-6 sm:mb-8 md:mb-12 px-2"
         >
           &ldquo;You are Daniel Craig but life owes you a Vesper Lynd?&rdquo;
         </motion.p>
@@ -77,25 +77,26 @@ export default function Hero() {
         {/* Description - concise */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-400 text-base md:text-lg mb-14 max-w-xl mx-auto leading-relaxed"
+          className="text-zinc-400 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-14 max-w-xl mx-auto leading-relaxed px-2"
         >
           Multi-agent intelligence that analyzes diffs, generates commits, and reviews code.
         </motion.p>
 
-        {/* CTAs - minimal */}
+        {/* CTAs - stack on mobile */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0"
         >
           <Link
             href="https://github.com/suka712/inyeon-upstream"
             target="_blank"
             rel="noopener noreferrer"
+            className="w-full sm:w-auto"
           >
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="btn-primary flex items-center gap-2"
+              className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto"
             >
               <svg
                 className="w-4 h-4"
@@ -116,16 +117,16 @@ export default function Hero() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={scrollToDemo}
-            className="btn-ghost"
+            className="btn-ghost w-full sm:w-auto"
           >
             See how it works
           </motion.button>
         </motion.div>
       </motion.div>
 
-      {/* Minimal scroll indicator */}
+      {/* Minimal scroll indicator - hidden on mobile */}
       <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 hidden sm:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}

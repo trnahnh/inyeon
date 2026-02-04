@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inyeon (인연)
 
-## Getting Started
+> *You are Daniel Craig but life owes you a Vesper Lynd?*
 
-First, run the development server:
+**Inyeon** means "fated connection" in Korean - your AI-powered git companion that analyzes diffs, generates commits, and reviews code with multi-agent intelligence.
+
+---
+
+## ⚡ Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Install from source
+pip install git+https://github.com/suka712/inyeon-upstream.git
+
+# Index your codebase (one-time setup for smart context)
+inyeon index
+
+# Generate conventional commit messages
+inyeon commit --staged
+
+# Get AI-powered code review
+inyeon review --staged
+
+# Analyze any diff
+git diff | inyeon analyze
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Multi-Agent Intelligence** - Specialized agents for commits, reviews, and task orchestration
+- **RAG-Powered Context** - Understands your entire codebase via ChromaDB embeddings
+- **Flexible LLM Support** - Use Gemini API (cloud) or Ollama (local)
+- **Conventional Commits** - Auto-generates properly formatted commit messages
+- **Smart Code Review** - AI insights on code quality, patterns, and potential issues
+- **Docker-Ready** - Deploy with one command via docker-compose
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🏗️ Architecture
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         CLI (Typer)                         │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+┌─────────────────────────▼───────────────────────────────────┐
+│                    FastAPI Backend                          │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
+│  │ CommitAgent │  │ ReviewAgent │  │ AgentOrchestrator   │  │
+│  └──────┬──────┘  └──────┬──────┘  └──────────┬──────────┘  │
+│         └────────────────┼────────────────────┘             │
+│                          ▼                                  │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │                    LangGraph                          │  │
+│  │         (Multi-step agentic workflows)                │  │
+│  └───────────────────────┬───────────────────────────────┘  │
+│                          ▼                                  │
+│  ┌──────────────┐  ┌─────────────────────────────────────┐  │
+│  │ LLM Factory  │  │           RAG Layer                 │  │
+│  │ Gemini/Ollama│  │  ChromaDB + Gemini Embeddings       │  │
+│  └──────────────┘  └─────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛠️ Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| **Layer** | **Technology** |
+|-----------|----------------|
+| **CLI** | Typer, Rich |
+| **Backend** | FastAPI, Pydantic |
+| **Agents** | LangGraph |
+| **LLM** | Gemini 2.5 Flash, Ollama (Qwen2.5-Coder) |
+| **RAG** | ChromaDB, Gemini Embeddings |
+| **Deploy** | Docker, Railway |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📡 API Endpoints
+
+| **Endpoint** | **Purpose** |
+|--------------|-------------|
+| `POST /api/v1/analyze` | Analyze git diff |
+| `POST /api/v1/generate-commit` | Generate commit message |
+| `POST /api/v1/agent/review` | AI code review |
+| `POST /api/v1/agent/orchestrate` | Auto-route to appropriate agent |
+| `POST /api/v1/rag/index` | Index codebase for RAG |
+| `POST /api/v1/rag/search` | Semantic code search |
+
+**Live API Docs:** https://inyeon-upstream-production.up.railway.app/docs
+
+---
+
+## 💻 Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/suka712/inyeon-upstream.git
+cd inyeon-upstream
+
+# Set up Python environment
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # Linux/Mac
+
+# Install in development mode
+pip install -e ".[dev]"
+
+# Start services with Docker
+docker-compose up
+```
+
+---
+
+## 📬 Contact
+
+For contributions or inquiries, contact **Anh Tran** at anhdtran.forwork@gmail.com

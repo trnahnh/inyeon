@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Inyeon - Your Agentic AI Git Companion",
+  title: "Inyeon - Agentic AI Git Companion",
   description:
     "Multi-agent AI assistant for git workflows. Generate commits, review code, analyze diffs with Gemini and Ollama. Open source, runs locally.",
   keywords: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Inyeon" }],
   openGraph: {
-    title: "Inyeon - Your Agentic AI Git Companion",
+    title: "Inyeon - Agentic AI Git Companion",
     description:
       "Multi-agent AI assistant for git workflows. Generate commits, review code, analyze diffs with Gemini and Ollama.",
     url: "https://inyeon.dev",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Inyeon - Your Agentic AI Git Companion",
+    title: "Inyeon - Agentic AI Git Companion",
     description:
       "Multi-agent AI assistant for git workflows. Generate commits, review code, analyze diffs.",
   },

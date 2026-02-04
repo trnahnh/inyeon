@@ -124,7 +124,7 @@ export default function TerminalDemo() {
       case "command":
         return (
           <div key={index} className="flex items-start gap-2">
-            <span className="text-aurora-purple">$</span>
+            <span className="text-aurora-purple flex-shrink-0">$</span>
             {isActive ? (
               <TypeWriter
                 text={line.content}
@@ -155,10 +155,10 @@ export default function TerminalDemo() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onAnimationComplete={isActive ? handleStepComplete : undefined}
-            className="pl-4 my-3"
+            className="pl-4 my-2 sm:my-3"
           >
-            <div className="aurora-border rounded-md p-3 inline-block">
-              <span className="text-aurora-cyan">{line.content}</span>
+            <div className="aurora-border rounded-md p-2 sm:p-3 inline-block max-w-full">
+              <span className="text-aurora-cyan text-[11px] sm:text-xs md:text-sm break-all">{line.content}</span>
             </div>
           </motion.div>
         );
@@ -172,14 +172,14 @@ export default function TerminalDemo() {
             onAnimationComplete={isActive ? handleStepComplete : undefined}
             className="flex items-center gap-2 text-aurora-green pl-4"
           >
-            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"
                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                 clipRule="evenodd"
               />
             </svg>
-            <span className="text-sm">{line.content}</span>
+            <span className="text-xs sm:text-sm">{line.content}</span>
           </motion.div>
         );
 
@@ -189,22 +189,22 @@ export default function TerminalDemo() {
   };
 
   return (
-    <section className="py-24 px-6" ref={ref}>
+    <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6" ref={ref}>
       <motion.div
-        className="max-w-2xl mx-auto"
+        className="max-w-2xl mx-auto w-full"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.6 }}
       >
         {/* Terminal window */}
-        <div className="code-block overflow-hidden aurora-glow">
+        <div className="code-block overflow-hidden aurora-glow w-full">
           {/* Title bar - minimal */}
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-border">
+          <div className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-3 border-b border-border">
             <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-              <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-              <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-700" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-700" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-700" />
             </div>
             <span className="text-zinc-500 text-xs ml-2">terminal</span>
             <div className="flex-1" />
@@ -218,7 +218,7 @@ export default function TerminalDemo() {
 
           {/* Terminal content */}
           <div
-            className="p-5 font-mono text-sm min-h-[180px]"
+            className="p-3 sm:p-4 md:p-5 font-mono text-[11px] sm:text-xs md:text-sm min-h-[160px] sm:min-h-[180px] overflow-x-auto"
             style={{ fontFamily: "var(--font-jetbrains-mono), monospace" }}
           >
             <div className="space-y-2">

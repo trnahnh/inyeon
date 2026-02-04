@@ -20,7 +20,7 @@ const diffContent = `@@ -15,8 +15,21 @@ class AuthService:
 +            session_id = self._create_session(user.id)
 +            return session_id
 +        return None
-+
+
 +    def _create_session(self, user_id: int) -> str:
 +        session_id = secrets.token_urlsafe(32)
 +        self.active_sessions[session_id] = Session(
@@ -62,148 +62,157 @@ Consider adding:
 
 export default function DiffShowcase() {
   return (
-    <section id="showcase" className="py-32 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="showcase" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto w-full">
         {/* Section header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-10 sm:mb-16 md:mb-20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-zinc-500 text-sm tracking-[0.2em] uppercase mb-4">
+          <p className="text-zinc-500 text-xs sm:text-sm tracking-[0.2em] uppercase mb-3 sm:mb-4">
             How it works
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
             From <span className="text-navy">diff</span> to{" "}
             <span className="text-golden">commit</span>
           </h2>
-          <p className="text-zinc-400 max-w-lg mx-auto">
+          <p className="text-zinc-400 text-sm sm:text-base max-w-lg mx-auto px-2">
             Inyeon analyzes your changes and generates meaningful commit
             messages with AI-powered code review.
           </p>
         </motion.div>
 
-        {/* Showcase grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
+        {/* Showcase grid - stack on mobile */}
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Left: Git Diff */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6 }}
+            className="w-full"
           >
-            <div className="mb-4 flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-aurora-pink" />
-              <span className="text-text-secondary text-sm">git diff</span>
+            <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
+              <div className="w-2 h-2 rounded-full bg-aurora-pink flex-shrink-0" />
+              <span className="text-text-secondary text-xs sm:text-sm">git diff</span>
             </div>
-            <div className="code-block overflow-hidden aurora-glow">
-              <div className="px-4 py-3 border-b border-border flex items-center gap-2">
+            <div className="code-block overflow-hidden aurora-glow w-full">
+              <div className="px-3 sm:px-4 py-2 sm:py-3 border-b border-border flex items-center gap-2">
                 <span className="text-text-secondary text-xs">backend/auth.py</span>
               </div>
-              <pre className="p-4 text-sm overflow-x-auto">
-                <code>
-                  {diffContent.split("\n").map((line, i) => {
-                    let className = "text-zinc-400";
-                    if (line.startsWith("+") && !line.startsWith("+++")) {
-                      className = "text-aurora-green";
-                    } else if (line.startsWith("-") && !line.startsWith("---")) {
-                      className = "text-red-400";
-                    } else if (line.startsWith("@@")) {
-                      className = "text-aurora-purple";
-                    }
-                    return (
-                      <div key={i} className={className}>
-                        {line}
-                      </div>
-                    );
-                  })}
-                </code>
-              </pre>
-            </div>
-          </motion.div>
-
-          {/* Right: Generated output */}
-          <div className="space-y-6">
-            {/* Commit Message */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <div className="mb-4 flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-aurora-cyan" />
-                <span className="text-text-secondary text-sm">
-                  Generated Commit
-                </span>
-              </div>
-              <div className="code-block overflow-hidden aurora-glow">
-                <pre className="p-4 text-sm">
+              <div className="overflow-x-auto">
+                <pre className="p-3 sm:p-4 text-[11px] sm:text-xs md:text-sm">
                   <code>
-                    {commitMessage.split("\n").map((line, i) => {
+                    {diffContent.split("\n").map((line, i) => {
                       let className = "text-zinc-400";
-                      if (i === 0) {
-                        className = "text-aurora-cyan font-medium";
-                      } else if (line.startsWith("BREAKING")) {
-                        className = "text-aurora-pink";
-                      } else if (line.startsWith("-")) {
-                        className = "text-zinc-300";
+                      if (line.startsWith("+") && !line.startsWith("+++")) {
+                        className = "text-aurora-green";
+                      } else if (line.startsWith("-") && !line.startsWith("---")) {
+                        className = "text-red-400";
+                      } else if (line.startsWith("@@")) {
+                        className = "text-aurora-purple";
                       }
                       return (
-                        <div key={i} className={className}>
+                        <div key={i} className={`${className} whitespace-pre`}>
                           {line}
                         </div>
                       );
                     })}
                   </code>
                 </pre>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right: Generated output */}
+          <div className="flex flex-col gap-4 sm:gap-6 w-full">
+            {/* Commit Message */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="w-full"
+            >
+              <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
+                <div className="w-2 h-2 rounded-full bg-aurora-cyan flex-shrink-0" />
+                <span className="text-text-secondary text-xs sm:text-sm">
+                  Generated Commit
+                </span>
+              </div>
+              <div className="code-block overflow-hidden aurora-glow w-full">
+                <div className="overflow-x-auto">
+                  <pre className="p-3 sm:p-4 text-[11px] sm:text-xs md:text-sm">
+                    <code>
+                      {commitMessage.split("\n").map((line, i) => {
+                        let className = "text-zinc-400";
+                        if (i === 0) {
+                          className = "text-aurora-cyan font-medium";
+                        } else if (line.startsWith("BREAKING")) {
+                          className = "text-aurora-pink";
+                        } else if (line.startsWith("-")) {
+                          className = "text-zinc-300";
+                        }
+                        return (
+                          <div key={i} className={className}>
+                            {line}
+                          </div>
+                        );
+                      })}
+                    </code>
+                  </pre>
+                </div>
               </div>
             </motion.div>
 
             {/* AI Review */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="w-full"
             >
-              <div className="mb-4 flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-aurora-green" />
-                <span className="text-text-secondary text-sm">AI Review</span>
+              <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
+                <div className="w-2 h-2 rounded-full bg-aurora-green flex-shrink-0" />
+                <span className="text-text-secondary text-xs sm:text-sm">AI Review</span>
               </div>
-              <div className="code-block overflow-hidden">
-                <pre className="p-4 text-sm">
-                  <code>
-                    {reviewOutput.split("\n").map((line, i) => {
-                      let className = "text-zinc-400";
-                      if (line.startsWith("##")) {
-                        className = "text-aurora-purple font-medium";
-                      } else if (line.startsWith("✓")) {
-                        className = "text-aurora-green";
-                      } else if (line.startsWith("•")) {
-                        className = "text-zinc-500";
-                      }
-                      return (
-                        <div key={i} className={className}>
-                          {line}
-                        </div>
-                      );
-                    })}
-                  </code>
-                </pre>
+              <div className="code-block overflow-hidden w-full">
+                <div className="overflow-x-auto">
+                  <pre className="p-3 sm:p-4 text-[11px] sm:text-xs md:text-sm">
+                    <code>
+                      {reviewOutput.split("\n").map((line, i) => {
+                        let className = "text-zinc-400";
+                        if (line.startsWith("##")) {
+                          className = "text-aurora-purple font-medium";
+                        } else if (line.startsWith("✓")) {
+                          className = "text-aurora-green";
+                        } else if (line.startsWith("•")) {
+                          className = "text-zinc-500";
+                        }
+                        return (
+                          <div key={i} className={className}>
+                            {line}
+                          </div>
+                        );
+                      })}
+                    </code>
+                  </pre>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Command examples */}
+        {/* Command examples - stack on mobile */}
         <motion.div
-          className="mt-20 grid md:grid-cols-3 gap-6"
+          className="mt-10 sm:mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           {[
@@ -213,9 +222,9 @@ export default function DiffShowcase() {
           ].map((item, i) => (
             <div
               key={i}
-              className="p-4 rounded-lg border border-border hover:border-aurora-purple/40 transition-colors group"
+              className="p-3 sm:p-4 rounded-lg border border-border hover:border-aurora-purple/40 transition-colors group"
             >
-              <code className="text-aurora-cyan text-sm group-hover:text-aurora-purple transition-colors">
+              <code className="text-aurora-cyan text-xs sm:text-sm group-hover:text-aurora-purple transition-colors">
                 {item.cmd}
               </code>
               <p className="text-text-secondary text-xs mt-2">{item.desc}</p>

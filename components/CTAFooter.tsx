@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function CTAFooter() {
   return (
-    <section className="py-32 px-6 relative">
+    <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 relative">
       {/* Subtle aurora glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -15,12 +15,12 @@ export default function CTAFooter() {
         }}
       />
 
-      <div className="max-w-xl mx-auto text-center relative z-10">
+      <div className="max-w-xl mx-auto text-center relative z-10 w-full">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-white mb-6"
+          className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-4 sm:mb-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           Transform your{" "}
@@ -28,10 +28,10 @@ export default function CTAFooter() {
         </motion.h2>
 
         <motion.p
-          className="text-zinc-400 mb-10"
+          className="text-zinc-400 text-sm sm:text-base mb-8 sm:mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           Open source. Runs locally. Ready to deploy.
@@ -40,7 +40,7 @@ export default function CTAFooter() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Link
@@ -51,7 +51,7 @@ export default function CTAFooter() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="btn-white inline-flex items-center gap-2 px-6 py-3 text-sm rounded-full transition-all"
+              className="btn-white inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm rounded-full transition-all"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -67,14 +67,14 @@ export default function CTAFooter() {
 
         {/* Footer */}
         <motion.footer
-          className="mt-24 pt-8 border-t border-zinc-800"
+          className="mt-12 sm:mt-16 md:mt-24 pt-6 sm:pt-8 border-t border-zinc-800"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <p className="text-zinc-500 text-xs">
-            Inyeon &copy; {new Date().getFullYear()}
+            &copy; Inyeon {new Date().getFullYear()}. All rights reserved.
           </p>
         </motion.footer>
       </div>
