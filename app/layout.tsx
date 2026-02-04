@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Inyeon - Agentic AI Git Companion",
     description:
       "Multi-agent AI assistant for git workflows. Generate commits, review code, analyze diffs with Gemini and Ollama.",
-    url: "https://inyeon.dev",
+    url: "https://inyeon-upstream.vercel.app",
     siteName: "Inyeon",
     type: "website",
     locale: "en_US",

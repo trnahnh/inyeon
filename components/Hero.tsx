@@ -45,7 +45,7 @@ export default function Hero() {
         {/* Korean text - subtle */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-600 text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase mb-4 sm:mb-6 md:mb-8"
+          className="text-zinc-600 text-2xl sm:text-xl md:text-2xl tracking-[0.3em] uppercase mb-4 sm:mb-6 md:mb-8"
         >
           &#51064;&#50672;
         </motion.p>
