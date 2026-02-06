@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 export default function CTAFooter() {
   return (
@@ -38,20 +37,22 @@ export default function CTAFooter() {
         </motion.p>
 
         <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Link
+          <a
             href="https://github.com/suka712/inyeon-upstream"
             target="_blank"
             rel="noopener noreferrer"
+            className="w-full sm:w-auto"
           >
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="btn-white inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm rounded-full transition-all"
+              className="btn-white inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm rounded-full transition-all w-full sm:w-auto"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -62,7 +63,25 @@ export default function CTAFooter() {
               </svg>
               View on GitHub
             </motion.button>
-          </Link>
+          </a>
+
+          <a
+            href="https://inyeon-upstream-production.up.railway.app/docs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto"
+          >
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-ghost inline-flex items-center justify-center gap-2 text-xs sm:text-sm w-full sm:w-auto"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Live API Docs
+            </motion.button>
+          </a>
         </motion.div>
 
         {/* Footer */}

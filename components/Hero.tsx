@@ -1,7 +1,7 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -27,11 +27,21 @@ const itemVariants = {
 };
 
 export default function Hero() {
+  const [copied, setCopied] = useState(false);
+
   const scrollToDemo = () => {
     const demoSection = document.getElementById("showcase");
     if (demoSection) {
       demoSection.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const copyInstall = () => {
+    navigator.clipboard.writeText(
+      "pip install git+https://github.com/suka712/inyeon-upstream.git"
+    );
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -69,7 +79,7 @@ export default function Hero() {
         {/* Signature quote - very subtle */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-600 italic text-lg sm:text-sm mb-6 sm:mb-8 md:mb-12 px-2"
+          className="text-zinc-600 italic text-2xl sm:text-sm mb-6 sm:mb-8 md:mb-12 px-2"
         >
           &ldquo;You are Daniel Craig but life owes you a Vesper Lynd?&rdquo;
         </motion.p>
@@ -77,17 +87,44 @@ export default function Hero() {
         {/* Description - concise */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-400 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-14 max-w-xl mx-auto leading-relaxed px-2"
+          className="text-zinc-400 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed px-2"
         >
           Multi-agent intelligence that analyzes diffs, generates commits, and reviews code.
         </motion.p>
+
+        {/* Install snippet */}
+        <motion.div
+          variants={itemVariants}
+          className="mb-8 sm:mb-10 md:mb-14 max-w-md mx-auto px-4 sm:px-0"
+        >
+          <button
+            onClick={copyInstall}
+            className="w-full code-block flex items-center justify-between gap-3 px-3 sm:px-4 py-2.5 sm:py-3 cursor-pointer hover:border-aurora-purple/40 transition-colors group"
+          >
+            <code className="text-[11px] sm:text-xs md:text-sm text-zinc-300 truncate">
+              <span className="text-aurora-purple">$</span>{" "}
+              pip install git+https://github.com/suka712/inyeon-upstream.git
+            </code>
+            <span className="text-zinc-500 group-hover:text-zinc-300 transition-colors flex-shrink-0">
+              {copied ? (
+                <svg className="w-4 h-4 text-aurora-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              ) : (
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              )}
+            </span>
+          </button>
+        </motion.div>
 
         {/* CTAs - stack on mobile */}
         <motion.div
           variants={itemVariants}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0"
         >
-          <Link
+          <a
             href="https://github.com/suka712/inyeon-upstream"
             target="_blank"
             rel="noopener noreferrer"
@@ -111,17 +148,39 @@ export default function Hero() {
               </svg>
               View on GitHub
             </motion.button>
-          </Link>
+          </a>
 
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          <a
+            href="https://inyeon-upstream-production.up.railway.app/docs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto"
+          >
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-ghost w-full sm:w-auto flex items-center justify-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Live API Docs
+            </motion.button>
+          </a>
+        </motion.div>
+
+        {/* Scroll hint */}
+        <motion.p
+          variants={itemVariants}
+          className="mt-6 sm:mt-8"
+        >
+          <button
             onClick={scrollToDemo}
-            className="btn-ghost w-full sm:w-auto"
+            className="text-zinc-600 hover:text-zinc-400 text-xs transition-colors"
           >
             See how it works
-          </motion.button>
-        </motion.div>
+          </button>
+        </motion.p>
       </motion.div>
 
       {/* Minimal scroll indicator - hidden on mobile */}
