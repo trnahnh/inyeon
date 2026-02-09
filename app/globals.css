@@ -75,18 +75,6 @@ body {
   background-clip: text;
 }
 
-.gradient-text-cool {
-  background: linear-gradient(
-    135deg,
-    #1e3a5f 0%,
-    #4a7cb5 50%,
-    #a85462 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* Accent colors */
 .text-navy {
   color: #4a7cb5;
@@ -108,19 +96,6 @@ body {
     0 0 60px rgba(236, 72, 153, 0.05);
 }
 
-.aurora-glow-strong {
-  box-shadow:
-    0 0 30px rgba(34, 211, 238, 0.2),
-    0 0 60px rgba(168, 85, 247, 0.12),
-    0 0 90px rgba(236, 72, 153, 0.08);
-}
-
-.aurora-border {
-  border: 1px solid transparent;
-  background: linear-gradient(#000, #000) padding-box,
-    linear-gradient(135deg, rgba(34, 211, 238, 0.4), rgba(168, 85, 247, 0.4), rgba(236, 72, 153, 0.4)) border-box;
-}
-
 /* Terminal cursor blink */
 @keyframes blink {
   0%, 50% { opacity: 1; }
@@ -131,47 +106,12 @@ body {
   animation: blink 1s infinite;
 }
 
-/* Subtle pulse for aurora elements */
-@keyframes aurora-pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
-}
-
-.aurora-pulse {
-  animation: aurora-pulse 4s ease-in-out infinite;
-}
-
 /* Code block styling */
 .code-block {
   background: #050505;
   border: 1px solid var(--border);
   border-radius: 8px;
   font-family: var(--font-mono), monospace;
-}
-
-/* Syntax highlighting */
-.syntax-added {
-  color: var(--aurora-green);
-}
-
-.syntax-removed {
-  color: #f87171;
-}
-
-.syntax-keyword {
-  color: var(--aurora-purple);
-}
-
-.syntax-string {
-  color: var(--aurora-cyan);
-}
-
-.syntax-comment {
-  color: var(--text-muted);
-}
-
-.syntax-function {
-  color: var(--aurora-pink);
 }
 
 /* Scrollbar styling */
@@ -226,19 +166,6 @@ body {
   color: var(--text-primary);
   border-color: rgba(184, 134, 11, 0.4);
   box-shadow: 0 0 20px rgba(184, 134, 11, 0.1);
-}
-
-/* Feature accent bars */
-.accent-bar-purple {
-  background: var(--aurora-purple);
-}
-
-.accent-bar-cyan {
-  background: var(--aurora-cyan);
-}
-
-.accent-bar-pink {
-  background: var(--aurora-pink);
 }
 
 /* White button with golden glow */

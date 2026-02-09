@@ -1,7 +1,8 @@
 {
   "name": "inyeon",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
+  "packageManager": "pnpm@10.28.2",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +12,6 @@
   "dependencies": {
     "framer-motion": "^12.31.0",
     "next": "16.1.6",
-    "pnpm": "^10.28.2",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },

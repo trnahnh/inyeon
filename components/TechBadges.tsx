@@ -9,6 +9,8 @@ const technologies = [
   "Gemini",
   "Ollama",
   "ChromaDB",
+  "scikit-learn",
+  "NumPy",
   "Docker",
 ];
 
