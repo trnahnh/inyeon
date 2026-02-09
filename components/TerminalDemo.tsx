@@ -177,6 +177,7 @@ export default function TerminalDemo() {
             key={index}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
             onAnimationComplete={isActive ? handleStepComplete : undefined}
             className="pl-4 my-2"
           >
@@ -210,6 +211,7 @@ export default function TerminalDemo() {
             key={index}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
             onAnimationComplete={isActive ? handleStepComplete : undefined}
             className="flex items-center gap-2 text-aurora-green pl-4"
           >
