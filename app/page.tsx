@@ -2,6 +2,7 @@ import BackgroundEffects from "@/components/BackgroundEffects";
 import Hero from "@/components/Hero";
 import TerminalDemo from "@/components/TerminalDemo";
 import DiffShowcase from "@/components/DiffShowcase";
+import SplitShowcase from "@/components/SplitShowcase";
 import Features from "@/components/Features";
 import TechBadges from "@/components/TechBadges";
 import CTAFooter from "@/components/CTAFooter";
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <TerminalDemo />
         <DiffShowcase />
+        <SplitShowcase />
         <Features />
         <TechBadges />
         <CTAFooter />

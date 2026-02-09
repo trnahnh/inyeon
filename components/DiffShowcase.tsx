@@ -85,7 +85,7 @@ export default function DiffShowcase() {
           </p>
         </motion.div>
 
-        {/* Showcase grid - stack on mobile */}
+        {/* Showcase grid */}
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Left: Git Diff */}
           <motion.div
@@ -97,11 +97,15 @@ export default function DiffShowcase() {
           >
             <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
               <div className="w-2 h-2 rounded-full bg-aurora-pink flex-shrink-0" />
-              <span className="text-text-secondary text-xs sm:text-sm">git diff</span>
+              <span className="text-text-secondary text-xs sm:text-sm">
+                git diff
+              </span>
             </div>
             <div className="code-block overflow-hidden aurora-glow w-full">
               <div className="px-3 sm:px-4 py-2 sm:py-3 border-b border-border flex items-center gap-2">
-                <span className="text-text-secondary text-xs">backend/auth.py</span>
+                <span className="text-text-secondary text-xs">
+                  backend/auth.py
+                </span>
               </div>
               <div className="overflow-x-auto">
                 <pre className="p-3 sm:p-4 text-[11px] sm:text-xs md:text-sm">
@@ -110,7 +114,10 @@ export default function DiffShowcase() {
                       let className = "text-zinc-400";
                       if (line.startsWith("+") && !line.startsWith("+++")) {
                         className = "text-aurora-green";
-                      } else if (line.startsWith("-") && !line.startsWith("---")) {
+                      } else if (
+                        line.startsWith("-") &&
+                        !line.startsWith("---")
+                      ) {
                         className = "text-red-400";
                       } else if (line.startsWith("@@")) {
                         className = "text-aurora-purple";
@@ -178,7 +185,9 @@ export default function DiffShowcase() {
             >
               <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
                 <div className="w-2 h-2 rounded-full bg-aurora-green flex-shrink-0" />
-                <span className="text-text-secondary text-xs sm:text-sm">AI Review</span>
+                <span className="text-text-secondary text-xs sm:text-sm">
+                  AI Review
+                </span>
               </div>
               <div className="code-block overflow-hidden w-full">
                 <div className="overflow-x-auto">
@@ -207,18 +216,31 @@ export default function DiffShowcase() {
           </div>
         </div>
 
-        {/* Command examples - stack on mobile */}
+        {/* Command examples - updated with split commands */}
         <motion.div
-          className="mt-10 sm:mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6"
+          className="mt-10 sm:mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           {[
-            { cmd: "inyeon commit --staged", desc: "Generate commit from staged changes" },
-            { cmd: "inyeon review --staged", desc: "Get AI code review" },
-            { cmd: "git diff | inyeon analyze", desc: "Analyze any diff" },
+            {
+              cmd: "inyeon commit --staged",
+              desc: "Generate commit from staged changes",
+            },
+            {
+              cmd: "inyeon split --staged",
+              desc: "Split into atomic commits",
+            },
+            {
+              cmd: "inyeon review --staged",
+              desc: "Get AI code review",
+            },
+            {
+              cmd: "git diff | inyeon analyze",
+              desc: "Analyze any diff",
+            },
           ].map((item, i) => (
             <div
               key={i}

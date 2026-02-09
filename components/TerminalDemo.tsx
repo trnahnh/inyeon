@@ -1,25 +1,39 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 
 interface TerminalLine {
-  type: "command" | "output" | "progress" | "success" | "box";
+  type: "command" | "output" | "progress" | "success" | "box" | "split-header";
   content: string;
   delay?: number;
 }
 
 const terminalSequence: TerminalLine[] = [
   { type: "command", content: "git add .", delay: 400 },
-  { type: "command", content: "inyeon commit --staged", delay: 300 },
-  { type: "progress", content: "Analyzing changes...", delay: 1800 },
+  { type: "command", content: "inyeon split --staged --execute", delay: 300 },
+  { type: "progress", content: "Analyzing changes...", delay: 1600 },
   {
-    type: "box",
-    content: `feat(auth): add session timeout and type hints`,
+    type: "split-header",
+    content: "Split Result: 3 commit groups",
     delay: 100,
   },
-  { type: "success", content: "Commit created", delay: 600 },
+  {
+    type: "box",
+    content: "[1/3] feat(auth): add session management",
+    delay: 400,
+  },
+  {
+    type: "box",
+    content: "[2/3] refactor(api): restructure endpoints",
+    delay: 400,
+  },
+  {
+    type: "box",
+    content: "[3/3] chore(deps): bump dependencies",
+    delay: 400,
+  },
+  { type: "success", content: "Done! Created 3/3 commits.", delay: 600 },
 ];
 
 function TypeWriter({
@@ -41,8 +55,11 @@ function TypeWriter({
       }, speed);
       return () => clearTimeout(timeout);
     } else {
-      setShowCursor(false);
-      onComplete();
+      const timeout = setTimeout(() => {
+        setShowCursor(false);
+        onComplete();
+      }, 0);
+      return () => clearTimeout(timeout);
     }
   }, [displayedText, text, speed, onComplete]);
 
@@ -61,7 +78,7 @@ function ProgressIndicator({ onComplete }: { onComplete: () => void }) {
     let count = 0;
     const interval = setInterval(() => {
       count++;
-      setDots(".".repeat((count % 4)));
+      setDots(".".repeat(count % 4));
       if (count >= 10) {
         clearInterval(interval);
         onComplete();
@@ -70,11 +87,7 @@ function ProgressIndicator({ onComplete }: { onComplete: () => void }) {
     return () => clearInterval(interval);
   }, [onComplete]);
 
-  return (
-    <span className="text-zinc-500">
-      Analyzing{dots}
-    </span>
-  );
+  return <span className="text-zinc-500">Analyzing{dots}</span>;
 }
 
 export default function TerminalDemo() {
@@ -90,22 +103,32 @@ export default function TerminalDemo() {
     setIsPlaying(true);
   }, []);
 
+  const stepTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const handleStepComplete = useCallback(() => {
     setCompletedSteps((prev) => [...prev, currentStep]);
     const nextStep = currentStep + 1;
 
     if (nextStep < terminalSequence.length) {
       const delay = terminalSequence[nextStep].delay || 200;
-      setTimeout(() => {
+      stepTimeoutRef.current = setTimeout(() => {
         setCurrentStep(nextStep);
       }, delay);
     } else {
       setIsPlaying(false);
-      setTimeout(() => {
+      stepTimeoutRef.current = setTimeout(() => {
         startDemo();
       }, 5000);
     }
   }, [currentStep, startDemo]);
+
+  useEffect(() => {
+    return () => {
+      if (stepTimeoutRef.current) {
+        clearTimeout(stepTimeoutRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (isInView && !isPlaying && currentStep === -1) {
@@ -148,18 +171,36 @@ export default function TerminalDemo() {
           </div>
         );
 
-      case "box":
+      case "split-header":
         return (
           <motion.div
             key={index}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onAnimationComplete={isActive ? handleStepComplete : undefined}
-            className="pl-4 my-2 sm:my-3"
+            className="pl-4 my-2"
           >
-            <div className="aurora-border rounded-md p-2 sm:p-3 inline-block max-w-full">
-              <span className="text-aurora-cyan text-[11px] sm:text-xs md:text-sm break-all">{line.content}</span>
+            <div className="border border-border rounded-md px-3 py-1.5 inline-block">
+              <span className="text-white text-[11px] sm:text-xs md:text-sm font-medium">
+                {line.content}
+              </span>
             </div>
+          </motion.div>
+        );
+
+      case "box":
+        return (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
+            onAnimationComplete={isActive ? handleStepComplete : undefined}
+            className="pl-4 my-1"
+          >
+            <span className="text-aurora-cyan text-[11px] sm:text-xs md:text-sm">
+              {line.content}
+            </span>
           </motion.div>
         );
 
@@ -172,7 +213,11 @@ export default function TerminalDemo() {
             onAnimationComplete={isActive ? handleStepComplete : undefined}
             className="flex items-center gap-2 text-aurora-green pl-4"
           >
-            <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <svg
+              className="w-3 h-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
               <path
                 fillRule="evenodd"
                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -199,12 +244,12 @@ export default function TerminalDemo() {
       >
         {/* Terminal window */}
         <div className="code-block overflow-hidden aurora-glow w-full">
-          {/* Title bar - minimal */}
+          {/* Title bar */}
           <div className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-3 border-b border-border">
             <div className="flex gap-1.5">
-              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-700" />
-              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-700" />
-              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-700" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-red-500/70" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-yellow-500/70" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-green-500/70" />
             </div>
             <span className="text-zinc-500 text-xs ml-2">terminal</span>
             <div className="flex-1" />
@@ -218,7 +263,7 @@ export default function TerminalDemo() {
 
           {/* Terminal content */}
           <div
-            className="p-3 sm:p-4 md:p-5 font-mono text-[11px] sm:text-xs md:text-sm min-h-[160px] sm:min-h-[180px] overflow-x-auto"
+            className="p-3 sm:p-4 md:p-5 font-mono text-[11px] sm:text-xs md:text-sm min-h-[200px] sm:min-h-[220px] overflow-x-auto"
             style={{ fontFamily: "var(--font-jetbrains-mono), monospace" }}
           >
             <div className="space-y-2">
