@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import TiltCard from "./TiltCard";
 
 const features = [
   {
@@ -46,7 +47,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6">
+    <section id="features" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto w-full">
         <motion.div
           className="text-center mb-8 sm:mb-12"
@@ -65,7 +66,7 @@ export default function Features() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false, amount: 0.3 }}
@@ -80,18 +81,22 @@ export default function Features() {
               transition={{ duration: 0.5, delay: index * 0.08 }}
               className="group w-full"
             >
-              <div
-                className="w-1 h-6 sm:h-8 mb-3 sm:mb-4 group-hover:h-10 sm:group-hover:h-12 transition-all duration-300"
-                style={{ backgroundColor: feature.accentColor }}
-              />
-              <h3
-                className={`${feature.titleColor} font-semibold text-base sm:text-lg mb-2`}
-              >
-                {feature.title}
-              </h3>
-              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed">
-                {feature.description}
-              </p>
+              <TiltCard className="h-full">
+                <div className="glass-card glass-card-glow p-5 sm:p-6 h-full">
+                  <div
+                    className="w-1 h-6 sm:h-8 mb-3 sm:mb-4 group-hover:h-10 sm:group-hover:h-12 transition-all duration-300 rounded-full"
+                    style={{ backgroundColor: feature.accentColor }}
+                  />
+                  <h3
+                    className={`${feature.titleColor} font-semibold text-base sm:text-lg mb-2`}
+                  >
+                    {feature.title}
+                  </h3>
+                  <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </motion.div>

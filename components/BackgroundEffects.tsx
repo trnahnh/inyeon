@@ -67,6 +67,25 @@ export default function BackgroundEffects() {
           ease: "easeInOut",
         }}
       />
+
+      {/* Film grain overlay */}
+      <svg className="hidden">
+        <filter id="noise">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.65"
+            numOctaves="3"
+            stitchTiles="stitch"
+          />
+        </filter>
+      </svg>
+      <div
+        className="absolute inset-0"
+        style={{
+          filter: "url(#noise)",
+          opacity: 0.035,
+        }}
+      />
     </div>
   );
 }

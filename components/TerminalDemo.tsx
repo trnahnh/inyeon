@@ -265,7 +265,7 @@ export default function TerminalDemo() {
 
           {/* Terminal content */}
           <div
-            className="p-3 sm:p-4 md:p-5 font-mono text-[11px] sm:text-xs md:text-sm min-h-[200px] sm:min-h-[220px] overflow-x-auto"
+            className="p-3 sm:p-4 md:p-5 font-mono text-[10px] sm:text-xs md:text-sm min-h-[180px] sm:min-h-[220px] overflow-x-auto"
             style={{ fontFamily: "var(--font-jetbrains-mono), monospace" }}
           >
             <div className="space-y-2">

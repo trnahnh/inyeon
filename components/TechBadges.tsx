@@ -35,7 +35,7 @@ export default function TechBadges() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="px-2.5 sm:px-3 py-1 sm:py-1.5 text-zinc-300 text-xs border border-zinc-700 rounded-full hover:text-white hover:border-purple-500/50 transition-colors"
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 text-zinc-300 text-xs rounded-full glass-badge hover:text-white"
             >
               {tech}
             </motion.span>

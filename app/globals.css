@@ -91,9 +91,96 @@ body {
 /* Aurora glow effects */
 .aurora-glow {
   box-shadow:
-    0 0 20px rgba(34, 211, 238, 0.1),
-    0 0 40px rgba(168, 85, 247, 0.08),
-    0 0 60px rgba(236, 72, 153, 0.05);
+    0 0 20px rgba(34, 211, 238, 0.12),
+    0 0 40px rgba(168, 85, 247, 0.1),
+    0 0 60px rgba(236, 72, 153, 0.06);
+}
+
+/* Glassmorphism cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(255, 255, 255, 0.02) inset;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 1px 2px rgba(255, 255, 255, 0.04) inset;
+}
+
+
+/* Glass badge for small elements */
+.glass-badge {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.glass-badge:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.3),
+    0 0 16px rgba(168, 85, 247, 0.08);
+}
+
+/* Animated gradient border card */
+.glass-card-glow {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.glass-card-glow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  translate: -50% -50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(34, 211, 238, 0.5),
+    rgba(168, 85, 247, 0.5),
+    rgba(236, 72, 153, 0.5),
+    rgba(184, 134, 11, 0.5),
+    rgba(34, 211, 238, 0.5)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -2;
+}
+
+.glass-card-glow:hover::before {
+  opacity: 1;
+  animation: border-rotate 4s linear infinite;
+}
+
+.glass-card-glow::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: rgba(10, 10, 10, 0.95);
+  z-index: -1;
+}
+
+@keyframes border-rotate {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
 }
 
 /* Terminal cursor blink */
@@ -108,10 +195,15 @@ body {
 
 /* Code block styling */
 .code-block {
-  background: #050505;
-  border: 1px solid var(--border);
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
   font-family: var(--font-mono), monospace;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    0 1px 2px rgba(255, 255, 255, 0.02) inset;
 }
 
 /* Scrollbar styling */

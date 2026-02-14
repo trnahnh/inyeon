@@ -86,7 +86,7 @@ export default function DiffShowcase() {
         </motion.div>
 
         {/* Showcase grid */}
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {/* Left: Git Diff */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -108,7 +108,7 @@ export default function DiffShowcase() {
                 </span>
               </div>
               <div className="overflow-x-auto">
-                <pre className="p-3 sm:p-4 text-[11px] sm:text-xs md:text-sm">
+                <pre className="p-3 sm:p-4 text-[10px] sm:text-xs md:text-sm">
                   <code>
                     {diffContent.split("\n").map((line, i) => {
                       let className = "text-zinc-400";
@@ -152,7 +152,7 @@ export default function DiffShowcase() {
               </div>
               <div className="code-block overflow-hidden aurora-glow w-full">
                 <div className="overflow-x-auto">
-                  <pre className="p-3 sm:p-4 text-[11px] sm:text-xs md:text-sm">
+                  <pre className="p-3 sm:p-4 text-[10px] sm:text-xs md:text-sm whitespace-pre-wrap break-words">
                     <code>
                       {commitMessage.split("\n").map((line, i) => {
                         let className = "text-zinc-400";
@@ -191,7 +191,7 @@ export default function DiffShowcase() {
               </div>
               <div className="code-block overflow-hidden w-full">
                 <div className="overflow-x-auto">
-                  <pre className="p-3 sm:p-4 text-[11px] sm:text-xs md:text-sm">
+                  <pre className="p-3 sm:p-4 text-[10px] sm:text-xs md:text-sm whitespace-pre-wrap break-words">
                     <code>
                       {reviewOutput.split("\n").map((line, i) => {
                         let className = "text-zinc-400";
@@ -218,7 +218,7 @@ export default function DiffShowcase() {
 
         {/* Command examples - updated with split commands */}
         <motion.div
-          className="mt-10 sm:mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
+          className="mt-8 sm:mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
@@ -244,7 +244,7 @@ export default function DiffShowcase() {
           ].map((item, i) => (
             <div
               key={i}
-              className="p-3 sm:p-4 rounded-lg border border-border hover:border-aurora-purple/40 transition-colors group"
+              className="p-3 sm:p-4 glass-card glass-card-glow group"
             >
               <code className="text-aurora-cyan text-xs sm:text-sm group-hover:text-aurora-purple transition-colors">
                 {item.cmd}
