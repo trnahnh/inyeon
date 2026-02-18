@@ -100,13 +100,13 @@ export default function Hero() {
           &ldquo;You are Daniel Craig but life owes you a Vesper Lynd?&rdquo;
         </motion.p>
 
-        {/* Description - updated for v2 */}
+        {/* Description - updated for v3 */}
         <motion.p
           variants={itemVariants}
           className="text-zinc-400 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed px-2"
         >
-          Multi-agent intelligence that analyzes diffs, generates commits,
-          reviews code, and splits changes into atomic commits.
+          Split commits, resolve conflicts, review code, and generate PRs &amp;
+          changelogs — all in one command.
         </motion.p>
 
         {/* Install snippet */}

@@ -11,9 +11,9 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 4, label: "AI Agents" },
+  { value: 7, label: "AI Agents" },
   { value: 4, label: "Clustering Strategies" },
-  { value: 20, prefix: "<", suffix: "s", label: "Per Commit" },
+  { value: 1, label: "Command to rule them all" },
   { value: 100, suffix: "%", label: "Open Source" },
 ];
 
