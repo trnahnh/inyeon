@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Inyeon - Agentic AI Git Companion",
   description:
-    "Multi-agent AI assistant for git workflows. Generate commits, review code, analyze diffs with Gemini and Ollama. Open source, runs locally.",
+    "Multi-agent AI assistant for git workflows. Split commits, resolve conflicts, generate PRs and changelogs with one command. Powered by Gemini and Ollama.",
   keywords: [
     "AI",
     "git",
@@ -29,12 +29,16 @@ export const metadata: Metadata = {
     "FastAPI",
     "code review",
     "developer tools",
+    "PR generation",
+    "conflict resolution",
+    "changelog",
+    "git hooks",
   ],
   authors: [{ name: "Inyeon" }],
   openGraph: {
     title: "Inyeon - Agentic AI Git Companion",
     description:
-      "Multi-agent AI assistant for git workflows. Generate commits, review code, analyze diffs with Gemini and Ollama.",
+      "Multi-agent AI assistant for git workflows. Split commits, resolve conflicts, generate PRs and changelogs with one command.",
     url: "https://inyeon-upstream.vercel.app",
     siteName: "Inyeon",
     type: "website",
@@ -44,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Inyeon - Agentic AI Git Companion",
     description:
-      "Multi-agent AI assistant for git workflows. Generate commits, review code, analyze diffs.",
+      "Multi-agent AI assistant for git workflows. Split commits, resolve conflicts, generate PRs and changelogs.",
   },
   robots: {
     index: true,
