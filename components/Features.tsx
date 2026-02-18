@@ -5,41 +5,44 @@ import TiltCard from "./TiltCard";
 
 const features = [
   {
-    title: "Atomic Commit Splitting",
+    title: "Full Workflow Automation",
     description:
-      "Intelligently group changes into smaller, logical commits with 4 clustering strategies",
+      "Split, commit, review, and generate PRs in one command with inyeon auto",
     accentColor: "#722f37",
     titleColor: "text-bordeaux",
   },
   {
-    title: "Multi-Agent System",
+    title: "Atomic Commit Splitting",
     description:
-      "CommitAgent, ReviewAgent, SplitAgent, and Orchestrator working in harmony",
+      "Intelligently group changes into smaller, logical commits with 4 clustering strategies",
     accentColor: "#1e3a5f",
     titleColor: "text-navy",
+  },
+  {
+    title: "AI Conflict Resolution",
+    description:
+      "Understands both sides of a merge conflict and produces clean, merged code",
+    accentColor: "#b8860b",
+    titleColor: "text-golden",
+  },
+  {
+    title: "Changelog Generation",
+    description:
+      "Groups commits by type with narrative summaries — write to file or stdout",
+    accentColor: "#a855f7",
+    titleColor: "text-aurora-purple",
   },
   {
     title: "RAG-Powered Context",
     description:
       "ChromaDB indexes your codebase for semantic understanding and smart retrieval",
-    accentColor: "#b8860b",
-    titleColor: "text-golden",
-  },
-  {
-    title: "Dual LLM Support",
-    description: "Local with Ollama or cloud with Gemini 2.5 Flash",
-    accentColor: "#a855f7",
-    titleColor: "text-aurora-purple",
-  },
-  {
-    title: "Conventional Commits",
-    description: "Auto-generates properly formatted commit messages every time",
     accentColor: "#22d3ee",
     titleColor: "text-aurora-cyan",
   },
   {
     title: "Smart Code Review",
-    description: "AI-powered insights on security, code quality, and patterns",
+    description:
+      "AI-powered insights on security, code quality, and patterns — runs inside auto pipeline",
     accentColor: "#10b981",
     titleColor: "text-aurora-green",
   },
@@ -92,7 +95,7 @@ export default function Features() {
                   >
                     {feature.title}
                   </h3>
-                  <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-zinc-400 text-sm leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

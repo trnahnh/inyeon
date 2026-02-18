@@ -11,29 +11,34 @@ interface TerminalLine {
 
 const terminalSequence: TerminalLine[] = [
   { type: "command", content: "git add .", delay: 400 },
-  { type: "command", content: "inyeon split --staged --execute", delay: 300 },
-  { type: "progress", content: "Analyzing changes...", delay: 1600 },
+  { type: "command", content: "inyeon auto --staged", delay: 300 },
+  { type: "progress", content: "Running pipeline...", delay: 1600 },
   {
     type: "split-header",
-    content: "Split Result: 3 commit groups",
+    content: "Pipeline: 4 steps",
     delay: 100,
   },
   {
     type: "box",
-    content: "[1/3] feat(auth): add session management",
+    content: "[1/4] Splitting → 3 atomic commits",
     delay: 400,
   },
   {
     type: "box",
-    content: "[2/3] refactor(api): restructure endpoints",
+    content: "[2/4] feat(auth): add session management",
     delay: 400,
   },
   {
     type: "box",
-    content: "[3/3] chore(deps): bump dependencies",
+    content: "[3/4] Reviewing code quality...",
     delay: 400,
   },
-  { type: "success", content: "Done! Created 3/3 commits.", delay: 600 },
+  {
+    type: "box",
+    content: "[4/4] Generating PR description...",
+    delay: 400,
+  },
+  { type: "success", content: "Done! 3 commits created, PR ready.", delay: 600 },
 ];
 
 function TypeWriter({
@@ -265,7 +270,7 @@ export default function TerminalDemo() {
 
           {/* Terminal content */}
           <div
-            className="p-3 sm:p-4 md:p-5 font-mono text-[10px] sm:text-xs md:text-sm min-h-[180px] sm:min-h-[220px] overflow-x-auto"
+            className="p-3 sm:p-4 md:p-5 font-mono text-xs sm:text-sm min-h-[180px] sm:min-h-[220px] overflow-x-auto"
             style={{ fontFamily: "var(--font-jetbrains-mono), monospace" }}
           >
             <div className="space-y-2">

@@ -151,7 +151,7 @@ export default function SplitShowcase() {
                   <p className="text-white text-xs sm:text-sm font-medium mb-1">
                     {strategy.name}
                   </p>
-                  <p className="text-zinc-500 text-xs leading-relaxed">
+                  <p className="text-zinc-400 text-sm leading-relaxed">
                     {strategy.description}
                   </p>
                 </TiltCard>
@@ -171,12 +171,12 @@ export default function SplitShowcase() {
           {splitCommands.map((item, i) => (
             <div
               key={i}
-              className="p-3 sm:p-4 glass-card glass-card-glow group"
+              className="p-4 sm:p-5 glass-card glass-card-glow group"
             >
-              <code className="text-aurora-cyan text-xs sm:text-sm group-hover:text-aurora-purple transition-colors">
+              <code className="text-aurora-cyan text-sm sm:text-base group-hover:text-aurora-purple transition-colors">
                 {item.cmd}
               </code>
-              <p className="text-text-secondary text-xs mt-2">{item.desc}</p>
+              <p className="text-zinc-400 text-sm mt-2">{item.desc}</p>
             </div>
           ))}
         </motion.div>

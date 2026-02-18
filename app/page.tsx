@@ -10,6 +10,7 @@ import Hero from "@/components/Hero";
 import TerminalDemo from "@/components/TerminalDemo";
 import DiffShowcase from "@/components/DiffShowcase";
 import SplitShowcase from "@/components/SplitShowcase";
+import WorkflowShowcase from "@/components/WorkflowShowcase";
 import Features from "@/components/Features";
 import TechBadges from "@/components/TechBadges";
 import Stats from "@/components/Stats";
@@ -39,6 +40,7 @@ export default function Home() {
           <TerminalDemo />
           <DiffShowcase />
           <SplitShowcase />
+          <WorkflowShowcase />
           <Features />
           <TechBadges />
           <Stats />

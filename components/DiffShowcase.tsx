@@ -108,7 +108,7 @@ export default function DiffShowcase() {
                 </span>
               </div>
               <div className="overflow-x-auto">
-                <pre className="p-3 sm:p-4 text-[10px] sm:text-xs md:text-sm">
+                <pre className="p-3 sm:p-4 text-xs sm:text-sm">
                   <code>
                     {diffContent.split("\n").map((line, i) => {
                       let className = "text-zinc-400";
@@ -152,7 +152,7 @@ export default function DiffShowcase() {
               </div>
               <div className="code-block overflow-hidden aurora-glow w-full">
                 <div className="overflow-x-auto">
-                  <pre className="p-3 sm:p-4 text-[10px] sm:text-xs md:text-sm whitespace-pre-wrap break-words">
+                  <pre className="p-3 sm:p-4 text-xs sm:text-sm whitespace-pre-wrap break-words">
                     <code>
                       {commitMessage.split("\n").map((line, i) => {
                         let className = "text-zinc-400";
@@ -191,7 +191,7 @@ export default function DiffShowcase() {
               </div>
               <div className="code-block overflow-hidden w-full">
                 <div className="overflow-x-auto">
-                  <pre className="p-3 sm:p-4 text-[10px] sm:text-xs md:text-sm whitespace-pre-wrap break-words">
+                  <pre className="p-3 sm:p-4 text-xs sm:text-sm whitespace-pre-wrap break-words">
                     <code>
                       {reviewOutput.split("\n").map((line, i) => {
                         let className = "text-zinc-400";
@@ -244,12 +244,12 @@ export default function DiffShowcase() {
           ].map((item, i) => (
             <div
               key={i}
-              className="p-3 sm:p-4 glass-card glass-card-glow group"
+              className="p-4 sm:p-5 glass-card glass-card-glow group"
             >
-              <code className="text-aurora-cyan text-xs sm:text-sm group-hover:text-aurora-purple transition-colors">
+              <code className="text-aurora-cyan text-sm sm:text-base group-hover:text-aurora-purple transition-colors">
                 {item.cmd}
               </code>
-              <p className="text-text-secondary text-xs mt-2">{item.desc}</p>
+              <p className="text-zinc-400 text-sm mt-2">{item.desc}</p>
             </div>
           ))}
         </motion.div>

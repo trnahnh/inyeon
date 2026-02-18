@@ -24,7 +24,7 @@ export default function TechBadges() {
         viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.6 }}
       >
-        <p className="text-zinc-500 text-xs text-center tracking-[0.2em] uppercase mb-4 sm:mb-6">
+        <p className="text-zinc-400 text-xs sm:text-sm text-center tracking-[0.2em] uppercase mb-4 sm:mb-6">
           Built with
         </p>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
@@ -35,7 +35,7 @@ export default function TechBadges() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="px-2.5 sm:px-3 py-1 sm:py-1.5 text-zinc-300 text-xs rounded-full glass-badge hover:text-white"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 text-zinc-300 text-sm sm:text-base rounded-full glass-badge hover:text-white"
             >
               {tech}
             </motion.span>
