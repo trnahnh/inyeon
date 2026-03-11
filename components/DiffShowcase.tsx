@@ -62,7 +62,7 @@ Consider adding:
 
 export default function DiffShowcase() {
   return (
-    <section id="showcase" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
+    <section id="showcase" className="py-10 sm:py-16 md:py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto w-full">
         {/* Section header */}
         <motion.div
@@ -72,14 +72,12 @@ export default function DiffShowcase() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-zinc-500 text-xs sm:text-sm tracking-[0.2em] uppercase mb-3 sm:mb-4">
-            How it works
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
+          <p className="label-mono mb-3 sm:mb-4">How it works</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text-primary mb-3 sm:mb-4">
             From <span className="text-navy">diff</span> to{" "}
             <span className="text-golden">commit</span>
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base max-w-lg mx-auto px-2">
+          <p className="text-zinc-500 text-sm sm:text-base max-w-lg mx-auto px-2">
             Inyeon analyzes your changes and generates meaningful commit
             messages with AI-powered code review.
           </p>
@@ -96,14 +94,12 @@ export default function DiffShowcase() {
             className="w-full"
           >
             <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
-              <div className="w-2 h-2 rounded-full bg-aurora-pink shrink-0" />
-              <span className="text-text-secondary text-xs sm:text-sm">
-                git diff
-              </span>
+              <div className="w-1 h-4 bg-zinc-600 shrink-0" />
+              <span className="label-mono">git diff</span>
             </div>
-            <div className="code-block overflow-hidden aurora-glow w-full">
+            <div className="code-block overflow-hidden hud-corners w-full">
               <div className="px-3 sm:px-4 py-2 sm:py-3 border-b border-border flex items-center gap-2">
-                <span className="text-text-secondary text-xs">
+                <span className="text-zinc-600 text-xs font-mono">
                   backend/auth.py
                 </span>
               </div>
@@ -111,16 +107,16 @@ export default function DiffShowcase() {
                 <pre className="p-3 sm:p-4 text-xs sm:text-sm">
                   <code>
                     {diffContent.split("\n").map((line, i) => {
-                      let className = "text-zinc-400";
+                      let className = "text-zinc-500";
                       if (line.startsWith("+") && !line.startsWith("+++")) {
-                        className = "text-aurora-green";
+                        className = "text-emerald-500";
                       } else if (
                         line.startsWith("-") &&
                         !line.startsWith("---")
                       ) {
                         className = "text-red-400";
                       } else if (line.startsWith("@@")) {
-                        className = "text-aurora-purple";
+                        className = "text-cold-blue";
                       }
                       return (
                         <div key={i} className={`${className} whitespace-pre`}>
@@ -145,23 +141,21 @@ export default function DiffShowcase() {
               className="w-full"
             >
               <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
-                <div className="w-2 h-2 rounded-full bg-aurora-cyan shrink-0" />
-                <span className="text-text-secondary text-xs sm:text-sm">
-                  Generated Commit
-                </span>
+                <div className="w-1 h-4 bg-cold-blue shrink-0" />
+                <span className="label-mono">Generated Commit</span>
               </div>
-              <div className="code-block overflow-hidden aurora-glow w-full">
+              <div className="code-block overflow-hidden hud-corners w-full">
                 <div className="overflow-x-auto">
                   <pre className="p-3 sm:p-4 text-xs sm:text-sm whitespace-pre-wrap wrap-break-word">
                     <code>
                       {commitMessage.split("\n").map((line, i) => {
-                        let className = "text-zinc-400";
+                        let className = "text-zinc-500";
                         if (i === 0) {
-                          className = "text-aurora-cyan font-medium";
+                          className = "text-cold-blue font-medium";
                         } else if (line.startsWith("BREAKING")) {
-                          className = "text-aurora-pink";
+                          className = "text-warm-gold";
                         } else if (line.startsWith("-")) {
-                          className = "text-zinc-300";
+                          className = "text-zinc-400";
                         }
                         return (
                           <div key={i} className={className}>
@@ -184,23 +178,21 @@ export default function DiffShowcase() {
               className="w-full"
             >
               <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
-                <div className="w-2 h-2 rounded-full bg-aurora-green shrink-0" />
-                <span className="text-text-secondary text-xs sm:text-sm">
-                  AI Review
-                </span>
+                <div className="w-1 h-4 bg-emerald-600 shrink-0" />
+                <span className="label-mono">AI Review</span>
               </div>
-              <div className="code-block overflow-hidden w-full">
+              <div className="code-block overflow-hidden hud-corners w-full">
                 <div className="overflow-x-auto">
                   <pre className="p-3 sm:p-4 text-xs sm:text-sm whitespace-pre-wrap wrap-break-word">
                     <code>
                       {reviewOutput.split("\n").map((line, i) => {
-                        let className = "text-zinc-400";
+                        let className = "text-zinc-500";
                         if (line.startsWith("##")) {
-                          className = "text-aurora-purple font-medium";
+                          className = "text-zinc-300 font-medium";
                         } else if (line.startsWith("✓")) {
-                          className = "text-aurora-green";
+                          className = "text-emerald-500";
                         } else if (line.startsWith("•")) {
-                          className = "text-zinc-500";
+                          className = "text-zinc-600";
                         }
                         return (
                           <div key={i} className={className}>
@@ -216,9 +208,9 @@ export default function DiffShowcase() {
           </div>
         </div>
 
-        {/* Command examples - updated with split commands */}
+        {/* Command examples */}
         <motion.div
-          className="mt-8 sm:mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6"
+          className="mt-8 sm:mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
@@ -244,12 +236,12 @@ export default function DiffShowcase() {
           ].map((item, i) => (
             <div
               key={i}
-              className="p-4 sm:p-5 glass-card glass-card-glow group"
+              className="p-4 sm:p-5 bg-black group hover:bg-white/2 transition-colors"
             >
-              <code className="text-aurora-cyan text-sm sm:text-base group-hover:text-aurora-purple transition-colors">
+              <code className="text-cold-blue text-sm sm:text-base font-mono group-hover:text-warm-gold transition-colors">
                 {item.cmd}
               </code>
-              <p className="text-zinc-400 text-sm mt-2">{item.desc}</p>
+              <p className="text-zinc-600 text-sm mt-2">{item.desc}</p>
             </div>
           ))}
         </motion.div>

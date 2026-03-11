@@ -26,7 +26,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
     e.preventDefault();
     setMenuOpen(false);
     const el = document.querySelector(href);
@@ -48,9 +51,9 @@ export default function Navbar() {
           <div
             className="mx-auto px-4 sm:px-6"
             style={{
-              background: "rgba(0, 0, 0, 0.6)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
+              background: "rgba(0, 0, 0, 0.8)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
               borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
             }}
           >
@@ -63,19 +66,19 @@ export default function Navbar() {
                   setMenuOpen(false);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="gradient-text font-bold text-lg tracking-tight"
+                className="gradient-text font-bold text-lg tracking-wide font-mono"
               >
                 Inyeon
               </a>
 
-              {/* Desktop nav links */}
-              <div className="hidden sm:flex items-center gap-6">
+              {/* Desktop nav */}
+              <div className="hidden sm:flex items-center gap-8">
                 {navLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleClick(e, link.href)}
-                    className="text-zinc-400 hover:text-white text-sm transition-colors"
+                    className="text-zinc-500 hover:text-zinc-300 text-xs tracking-widest uppercase transition-colors"
                   >
                     {link.label}
                   </a>
@@ -83,27 +86,39 @@ export default function Navbar() {
               </div>
 
               <div className="flex items-center gap-3">
-                {/* Hamburger button — mobile only */}
                 <button
                   onClick={() => setMenuOpen((prev) => !prev)}
-                  className="sm:hidden text-zinc-400 hover:text-white transition-colors p-1"
+                  className="sm:hidden text-zinc-500 hover:text-zinc-300 transition-colors p-2.5"
                   aria-label="Toggle menu"
                 >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                  >
                     {menuOpen ? (
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     ) : (
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
                     )}
                   </svg>
                 </button>
 
-                {/* GitHub link */}
                 <a
                   href="https://github.com/suka712/inyeon-upstream"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-400 hover:text-white transition-colors"
+                  className="text-zinc-500 hover:text-zinc-300 transition-colors p-2"
                 >
                   <svg
                     className="w-5 h-5"
@@ -121,7 +136,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile dropdown menu */}
+          {/* Mobile dropdown */}
           <AnimatePresence>
             {menuOpen && (
               <motion.div
@@ -131,9 +146,9 @@ export default function Navbar() {
                 transition={{ duration: 0.2 }}
                 className="sm:hidden overflow-hidden"
                 style={{
-                  background: "rgba(0, 0, 0, 0.8)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
+                  background: "rgba(0, 0, 0, 0.9)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
                   borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
                 }}
               >
@@ -143,7 +158,7 @@ export default function Navbar() {
                       key={link.href}
                       href={link.href}
                       onClick={(e) => handleClick(e, link.href)}
-                      className="text-zinc-400 hover:text-white text-sm transition-colors py-2 px-2 rounded-lg hover:bg-white/5"
+                      className="text-zinc-500 hover:text-zinc-300 text-sm tracking-widest uppercase transition-colors py-3 px-3 hover:bg-white/3"
                     >
                       {link.label}
                     </a>

@@ -5,19 +5,10 @@ import MagneticButton from "./MagneticButton";
 
 export default function CTAFooter() {
   return (
-    <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 relative">
-      {/* Subtle aurora glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at center bottom, rgba(168, 85, 247, 0.06) 0%, transparent 60%)",
-        }}
-      />
-
+    <section className="py-10 sm:py-16 md:py-24 px-4 sm:px-6 relative">
       <div className="max-w-xl mx-auto text-center relative z-10 w-full">
         <motion.h2
-          className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-4 sm:mb-6"
+          className="text-xl sm:text-2xl md:text-4xl font-bold text-text-primary mb-4 sm:mb-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
@@ -28,7 +19,7 @@ export default function CTAFooter() {
         </motion.h2>
 
         <motion.p
-          className="text-zinc-400 text-sm sm:text-base mb-8 sm:mb-10"
+          className="text-zinc-600 text-sm sm:text-base mb-8 sm:mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
@@ -51,7 +42,7 @@ export default function CTAFooter() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="btn-white inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-full transition-all w-full"
+              className="btn-white inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base transition-all w-full"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -73,15 +64,25 @@ export default function CTAFooter() {
               whileTap={{ scale: 0.98 }}
               className="btn-ghost inline-flex items-center justify-center gap-2 text-sm sm:text-base w-full"
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
               </svg>
               Live API Docs
             </motion.a>
           </MagneticButton>
         </motion.div>
 
-        {/* Contact nudge */}
+        {/* Contact */}
         <motion.div
           className="mt-10 sm:mt-14 md:mt-20"
           initial={{ opacity: 0 }}
@@ -89,7 +90,7 @@ export default function CTAFooter() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <p className="text-zinc-100 text-sm mb-3">
+          <p className="text-zinc-400 text-sm mb-3">
             Have ideas or want to contribute?
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
@@ -97,14 +98,14 @@ export default function CTAFooter() {
               href="https://github.com/suka712/inyeon-upstream/issues"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-400 hover:text-white text-sm transition-colors"
+              className="text-zinc-600 hover:text-zinc-300 text-sm transition-colors"
             >
               Open an issue
             </a>
-            <span className="text-zinc-600 hidden sm:inline">|</span>
+            <span className="text-zinc-800 hidden sm:inline">|</span>
             <a
               href="mailto:anhdtran.forwork@gmail.com"
-              className="text-zinc-400 hover:text-white text-sm sm:text-base transition-colors break-all"
+              className="text-zinc-600 hover:text-zinc-300 text-sm sm:text-base transition-colors break-all"
             >
               anhdtran.forwork@gmail.com
             </a>
@@ -113,14 +114,15 @@ export default function CTAFooter() {
 
         {/* Footer */}
         <motion.footer
-          className="mt-8 sm:mt-10 md:mt-14 pt-6 sm:pt-8 border-t border-zinc-800"
+          className="mt-8 sm:mt-10 md:mt-14 pt-6 sm:pt-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p className="text-zinc-500 text-xs">
-            &copy; Inyeon {new Date().getFullYear()}. All rights reserved.
+          <div className="section-line mb-6" />
+          <p className="text-zinc-700 text-xs font-mono tracking-wider">
+            &copy; Inyeon {new Date().getFullYear()}
           </p>
         </motion.footer>
       </div>

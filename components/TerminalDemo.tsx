@@ -75,7 +75,7 @@ function TypeWriter({
   return (
     <span>
       {displayedText}
-      {showCursor && <span className="cursor-blink text-aurora-cyan">|</span>}
+      {showCursor && <span className="cursor-blink text-warm-gold">|</span>}
     </span>
   );
 }
@@ -96,7 +96,7 @@ function ProgressIndicator({ onComplete }: { onComplete: () => void }) {
     return () => clearInterval(interval);
   }, [onComplete]);
 
-  return <span className="text-zinc-500">Analyzing{dots}</span>;
+  return <span className="text-zinc-600">Analyzing{dots}</span>;
 }
 
 export default function TerminalDemo() {
@@ -156,7 +156,7 @@ export default function TerminalDemo() {
       case "command":
         return (
           <div key={index} className="flex items-start gap-2">
-            <span className="text-aurora-purple shrink-0">$</span>
+            <span className="text-warm-gold shrink-0">$</span>
             {isActive ? (
               <TypeWriter
                 text={line.content}
@@ -164,7 +164,7 @@ export default function TerminalDemo() {
                 speed={50}
               />
             ) : (
-              <span className="text-white">{line.content}</span>
+              <span className="text-zinc-300">{line.content}</span>
             )}
           </div>
         );
@@ -175,7 +175,7 @@ export default function TerminalDemo() {
             {isActive ? (
               <ProgressIndicator onComplete={handleStepComplete} />
             ) : (
-              <span className="text-zinc-500">{line.content}</span>
+              <span className="text-zinc-600">{line.content}</span>
             )}
           </div>
         );
@@ -190,8 +190,8 @@ export default function TerminalDemo() {
             onAnimationComplete={isActive ? handleStepComplete : undefined}
             className="pl-4 my-2"
           >
-            <div className="border border-border rounded-md px-3 py-1.5 inline-block">
-              <span className="text-white text-[11px] sm:text-xs md:text-sm font-medium">
+            <div className="border border-border px-3 py-1.5 inline-block">
+              <span className="text-zinc-300 text-xs sm:text-sm font-medium">
                 {line.content}
               </span>
             </div>
@@ -208,7 +208,7 @@ export default function TerminalDemo() {
             onAnimationComplete={isActive ? handleStepComplete : undefined}
             className="pl-4 my-1"
           >
-            <span className="text-aurora-cyan text-[11px] sm:text-xs md:text-sm">
+            <span className="text-cold-blue text-xs sm:text-sm">
               {line.content}
             </span>
           </motion.div>
@@ -222,7 +222,7 @@ export default function TerminalDemo() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
             onAnimationComplete={isActive ? handleStepComplete : undefined}
-            className="flex items-center gap-2 text-aurora-green pl-4"
+            className="flex items-center gap-2 text-emerald-500 pl-4"
           >
             <svg
               className="w-3 h-3 shrink-0"
@@ -254,19 +254,21 @@ export default function TerminalDemo() {
         transition={{ duration: 0.6 }}
       >
         {/* Terminal window */}
-        <div className="code-block overflow-hidden aurora-glow w-full">
+        <div className="code-block overflow-hidden hud-corners w-full">
           {/* Title bar */}
           <div className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-3 border-b border-border">
             <div className="flex gap-1.5">
-              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-red-500/70" />
-              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-yellow-500/70" />
-              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-green-500/70" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-700" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-700" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-700" />
             </div>
-            <span className="text-zinc-500 text-xs ml-2">terminal</span>
+            <span className="text-zinc-600 text-xs ml-2 font-mono tracking-wider">
+              terminal
+            </span>
             <div className="flex-1" />
             <button
               onClick={startDemo}
-              className="text-zinc-600 hover:text-zinc-400 transition-colors text-xs"
+              className="text-zinc-700 hover:text-zinc-400 transition-colors text-xs font-mono tracking-wider"
             >
               replay
             </button>
@@ -283,8 +285,8 @@ export default function TerminalDemo() {
 
             {currentStep === -1 && (
               <div className="flex items-center gap-2">
-                <span className="text-aurora-purple">$</span>
-                <span className="cursor-blink text-aurora-cyan">|</span>
+                <span className="text-warm-gold">$</span>
+                <span className="cursor-blink text-warm-gold">|</span>
               </div>
             )}
           </div>

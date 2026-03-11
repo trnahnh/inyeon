@@ -31,7 +31,7 @@ export default function CursorSpotlight() {
 
     const handleMove = (e: MouseEvent) => {
       if (ref.current) {
-        ref.current.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(168, 85, 247, 0.04), transparent 70%)`;
+        ref.current.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(196, 163, 90, 0.03), transparent 70%)`;
       }
     };
 

@@ -9,29 +9,25 @@ const pipelineSteps = [
     step: "01",
     title: "Split",
     description: "Changes grouped into atomic commits by AI clustering",
-    accentColor: "#a85462",
-    borderColor: "rgba(168, 84, 98, 0.35)",
+    accentColor: "#a08090",
   },
   {
     step: "02",
     title: "Commit",
     description: "Conventional commit messages generated and applied",
-    accentColor: "#4a7cb5",
-    borderColor: "rgba(74, 124, 181, 0.35)",
+    accentColor: "#6b8db5",
   },
   {
     step: "03",
     title: "Review",
     description: "Security, quality, and pattern insights surfaced",
-    accentColor: "#d4a847",
-    borderColor: "rgba(212, 168, 71, 0.35)",
+    accentColor: "#c4a35a",
   },
   {
     step: "04",
     title: "PR",
     description: "Pull request description drafted and ready to paste",
-    accentColor: "#a855f7",
-    borderColor: "rgba(168, 85, 247, 0.35)",
+    accentColor: "#6b8db5",
   },
 ];
 
@@ -58,17 +54,8 @@ export default function WorkflowShowcase() {
   return (
     <section
       id="workflow"
-      className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 relative"
+      className="py-10 sm:py-16 md:py-24 px-4 sm:px-6 relative"
     >
-      {/* Subtle section glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(168, 85, 247, 0.04) 0%, transparent 60%)",
-        }}
-      />
-
       <div className="max-w-6xl mx-auto w-full relative z-10">
         {/* Section header */}
         <motion.div
@@ -78,15 +65,15 @@ export default function WorkflowShowcase() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-aurora-purple/30 bg-aurora-purple/5 mb-4 sm:mb-6">
-            <span className="text-aurora-purple text-xs font-medium">
+          <div className="inline-flex items-center gap-2 px-3 py-1 border border-border mb-4 sm:mb-6">
+            <span className="text-warm-gold text-xs font-mono tracking-wider">
               v3.0.0
             </span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
-            <span className="text-aurora-purple">Full workflow</span> automation
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text-primary mb-3 sm:mb-4">
+            <span className="text-golden">Full workflow</span> automation
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base max-w-lg mx-auto px-2">
+          <p className="text-zinc-500 text-sm sm:text-base max-w-lg mx-auto px-2">
             One command runs the entire pipeline — split, commit, review, and
             generate a PR description automatically.
           </p>
@@ -100,7 +87,7 @@ export default function WorkflowShowcase() {
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.7 }}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row lg:items-stretch gap-3 sm:gap-4 lg:gap-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {pipelineSteps.map((step, index) => (
               <Fragment key={step.step}>
                 <motion.div
@@ -108,51 +95,52 @@ export default function WorkflowShowcase() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, amount: 0.3 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="lg:flex-1 lg:min-w-0"
                 >
-                  <TiltCard className="group h-full">
-                    <div
-                      className="glass-card glass-card-glow p-5 sm:p-6 h-full"
-                      style={{ borderColor: step.borderColor }}
-                    >
+                  <TiltCard className="h-full">
+                    <div className="group p-5 sm:p-6 bg-black hover:bg-white/2 transition-colors h-full">
                       <div
-                        className="text-xs font-mono mb-3"
-                        style={{ color: step.accentColor, opacity: 0.75 }}
+                        className="text-xs font-mono mb-3 tracking-wider"
+                        style={{ color: step.accentColor, opacity: 0.6 }}
                       >
                         {step.step}
                       </div>
+                      <div
+                        className="w-6 h-px mb-3 group-hover:w-10 transition-all duration-300"
+                        style={{ backgroundColor: step.accentColor }}
+                      />
                       <h3
                         className="font-bold text-lg sm:text-xl mb-2"
                         style={{ color: step.accentColor }}
                       >
                         {step.title}
                       </h3>
-                      <p className="text-zinc-400 text-sm leading-relaxed">
+                      <p className="text-zinc-600 text-sm leading-relaxed">
                         {step.description}
                       </p>
                     </div>
                   </TiltCard>
                 </motion.div>
-
-                {/* Arrow — sits between cards as a flex child, desktop only */}
-                {index < pipelineSteps.length - 1 && (
-                  <div className="hidden lg:flex items-center justify-center w-10 shrink-0">
-                    <svg
-                      className="w-4 h-4 text-zinc-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                )}
               </Fragment>
+            ))}
+          </div>
+
+          {/* Connecting arrows — desktop only */}
+          <div className="hidden lg:flex justify-around mt-4">
+            {[0, 1, 2].map((i) => (
+              <svg
+                key={i}
+                className="w-4 h-4 text-zinc-700"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19 14l-7 7m0 0l-7-7"
+                />
+              </svg>
             ))}
           </div>
         </motion.div>
@@ -165,13 +153,15 @@ export default function WorkflowShowcase() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="glass-card p-5 sm:p-6 border border-aurora-green/20 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="shrink-0 w-1.5 h-10 bg-aurora-green rounded-full" />
+          <div
+            className="panel p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+            style={{ borderLeft: "2px solid #10b981" }}
+          >
             <div>
-              <p className="text-aurora-green text-sm sm:text-base font-medium mb-1">
+              <p className="text-emerald-500 text-sm sm:text-base font-medium mb-1 tracking-wide">
                 Cost-optimized short-circuits
               </p>
-              <p className="text-zinc-400 text-sm leading-relaxed">
+              <p className="text-zinc-600 text-sm leading-relaxed">
                 Skips split for single-file changes · Skips review for small
                 diffs (&lt;500 chars) · As few as 2 LLM calls for simple changes
               </p>
@@ -181,7 +171,7 @@ export default function WorkflowShowcase() {
 
         {/* Auto command examples */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
@@ -190,12 +180,12 @@ export default function WorkflowShowcase() {
           {autoCommands.map((item, i) => (
             <div
               key={i}
-              className="p-4 sm:p-5 glass-card glass-card-glow group"
+              className="p-4 sm:p-5 bg-black group hover:bg-white/2 transition-colors"
             >
-              <code className="text-aurora-purple text-sm sm:text-base group-hover:text-aurora-cyan transition-colors">
+              <code className="text-warm-gold text-sm sm:text-base font-mono group-hover:text-cold-blue transition-colors">
                 {item.cmd}
               </code>
-              <p className="text-zinc-400 text-sm mt-2">{item.desc}</p>
+              <p className="text-zinc-600 text-sm mt-2">{item.desc}</p>
             </div>
           ))}
         </motion.div>

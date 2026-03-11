@@ -8,43 +8,37 @@ const features = [
     title: "Full Workflow Automation",
     description:
       "Split, commit, review, and generate PRs in one command with inyeon auto",
-    accentColor: "#722f37",
-    titleColor: "text-bordeaux",
+    accentColor: "#a08090",
   },
   {
     title: "Atomic Commit Splitting",
     description:
       "Intelligently group changes into smaller, logical commits with 4 clustering strategies",
-    accentColor: "#1e3a5f",
-    titleColor: "text-navy",
+    accentColor: "#4a7cb5",
   },
   {
     title: "AI Conflict Resolution",
     description:
       "Understands both sides of a merge conflict and produces clean, merged code",
-    accentColor: "#b8860b",
-    titleColor: "text-golden",
+    accentColor: "#c4a35a",
   },
   {
     title: "Changelog Generation",
     description:
       "Groups commits by type with narrative summaries — write to file or stdout",
-    accentColor: "#a855f7",
-    titleColor: "text-aurora-purple",
+    accentColor: "#6b8db5",
   },
   {
     title: "RAG-Powered Context",
     description:
       "ChromaDB indexes your codebase for semantic understanding and smart retrieval",
-    accentColor: "#22d3ee",
-    titleColor: "text-aurora-cyan",
+    accentColor: "#6b7a8d",
   },
   {
     title: "Smart Code Review",
     description:
       "AI-powered insights on security, code quality, and patterns — runs inside auto pipeline",
     accentColor: "#10b981",
-    titleColor: "text-aurora-green",
   },
 ];
 
@@ -59,17 +53,15 @@ export default function Features() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-zinc-500 text-xs sm:text-sm tracking-[0.2em] uppercase mb-3 sm:mb-4">
-            Features
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+          <p className="label-mono mb-3 sm:mb-4">Features</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text-primary">
             Everything you need for{" "}
             <span className="gradient-text-warm">smarter git</span>
           </h2>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false, amount: 0.3 }}
@@ -85,17 +77,18 @@ export default function Features() {
               className="group w-full"
             >
               <TiltCard className="h-full">
-                <div className="glass-card glass-card-glow p-5 sm:p-6 h-full">
+                <div className="p-5 sm:p-6 bg-black hover:bg-white/2 transition-colors h-full">
                   <div
-                    className="w-1 h-6 sm:h-8 mb-3 sm:mb-4 group-hover:h-10 sm:group-hover:h-12 transition-all duration-300 rounded-full"
+                    className="w-6 h-px mb-4 group-hover:w-12 transition-all duration-300"
                     style={{ backgroundColor: feature.accentColor }}
                   />
                   <h3
-                    className={`${feature.titleColor} font-semibold text-base sm:text-lg mb-2`}
+                    className="font-medium text-base sm:text-lg mb-2"
+                    style={{ color: feature.accentColor }}
                   >
                     {feature.title}
                   </h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed">
+                  <p className="text-zinc-600 text-sm leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

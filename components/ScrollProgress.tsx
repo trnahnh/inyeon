@@ -7,11 +7,11 @@ export default function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-[2px] z-60"
+      className="fixed top-0 left-0 right-0 h-px z-60"
       style={{
         scaleX: scrollYProgress,
         transformOrigin: "0%",
-        background: "linear-gradient(90deg, #1e3a5f, #722f37, #b8860b)",
+        background: "linear-gradient(90deg, #4a7cb5, #c4a35a)",
       }}
     />
   );

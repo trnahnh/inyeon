@@ -56,7 +56,7 @@ export default function Hero() {
         {/* Korean text */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-600 text-xl sm:text-2xl tracking-[0.3em] uppercase mb-4 sm:mb-6 md:mb-8"
+          className="text-zinc-700 text-xl sm:text-2xl tracking-[0.4em] uppercase mb-4 sm:mb-6 md:mb-8 font-mono"
         >
           &#51064;&#50672;
         </motion.p>
@@ -87,7 +87,7 @@ export default function Hero() {
         {/* Tagline */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-300 text-base sm:text-lg md:text-xl mb-3 sm:mb-4"
+          className="text-zinc-400 text-base sm:text-lg md:text-xl mb-3 sm:mb-4 tracking-wide"
         >
           Your Agentic AI Git Companion
         </motion.p>
@@ -100,10 +100,10 @@ export default function Hero() {
           &ldquo;You are Daniel Craig but life owes you a Vesper Lynd?&rdquo;
         </motion.p>
 
-        {/* Description - updated for v3 */}
+        {/* Description */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-400 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed px-2"
+          className="text-zinc-500 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed px-2"
         >
           Split commits, resolve conflicts, review code, and generate PRs &amp;
           changelogs — all in one command.
@@ -116,16 +116,16 @@ export default function Hero() {
         >
           <button
             onClick={copyInstall}
-            className="w-full code-block flex items-center justify-between gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 cursor-pointer hover:border-aurora-purple/40 transition-colors group min-w-0"
+            className="w-full code-block flex items-center justify-between gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 cursor-pointer hover:border-warm-gold/30 transition-colors group min-w-0"
           >
-            <code className="text-[10px] sm:text-xs md:text-sm text-zinc-300 overflow-hidden text-ellipsis whitespace-nowrap block min-w-0">
-              <span className="text-aurora-purple">$</span> pip install
+            <code className="text-[10px] sm:text-xs md:text-sm text-zinc-400 overflow-hidden text-ellipsis whitespace-nowrap block min-w-0">
+              <span className="text-warm-gold">$</span> pip install
               git+https://github.com/suka712/inyeon-upstream.git
             </code>
-            <span className="text-zinc-500 group-hover:text-zinc-300 transition-colors shrink-0">
+            <span className="text-zinc-600 group-hover:text-zinc-400 transition-colors shrink-0">
               {copied ? (
                 <svg
-                  className="w-4 h-4 text-aurora-green"
+                  className="w-4 h-4 text-emerald-500"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -143,7 +143,7 @@ export default function Hero() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth={2}
+                  strokeWidth={1.5}
                 >
                   <path
                     strokeLinecap="round"
@@ -161,7 +161,6 @@ export default function Hero() {
           variants={itemVariants}
           className="flex flex-col items-center gap-3 sm:gap-4 px-4 sm:px-0"
         >
-          {/* Primary row */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
             <MagneticButton className="w-full sm:w-auto">
               <motion.a
@@ -201,7 +200,7 @@ export default function Hero() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth={2}
+                  strokeWidth={1.5}
                 >
                   <path
                     strokeLinecap="round"
@@ -214,7 +213,6 @@ export default function Hero() {
             </MagneticButton>
           </div>
 
-          {/* See how it works */}
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -226,7 +224,7 @@ export default function Hero() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              strokeWidth={2}
+              strokeWidth={1.5}
             >
               <path
                 strokeLinecap="round"
@@ -239,7 +237,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator - hidden on mobile */}
+      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 hidden sm:block"
         initial={{ opacity: 0 }}

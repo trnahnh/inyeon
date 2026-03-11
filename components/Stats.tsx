@@ -17,7 +17,13 @@ const stats: StatItem[] = [
   { value: 100, suffix: "%", label: "Open Source" },
 ];
 
-function AnimatedCounter({ item, inView }: { item: StatItem; inView: boolean }) {
+function AnimatedCounter({
+  item,
+  inView,
+}: {
+  item: StatItem;
+  inView: boolean;
+}) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -47,7 +53,7 @@ function AnimatedCounter({ item, inView }: { item: StatItem; inView: boolean }) 
   }, [inView, item.value]);
 
   return (
-    <span className="gradient-text text-2xl sm:text-3xl md:text-5xl font-bold tabular-nums">
+    <span className="gradient-text text-2xl sm:text-3xl md:text-5xl font-bold tabular-nums font-mono">
       {item.prefix}
       {count}
       {item.suffix}
@@ -68,7 +74,7 @@ export default function Stats() {
         viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="glass-card p-6 sm:p-8 md:p-10">
+        <div className="panel hud-corners p-6 sm:p-8 md:p-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((item, index) => (
               <motion.div
@@ -80,7 +86,7 @@ export default function Stats() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <AnimatedCounter item={item} inView={inView} />
-                <p className="text-zinc-500 text-xs sm:text-sm mt-2">
+                <p className="text-zinc-600 text-xs sm:text-sm mt-2 tracking-wide">
                   {item.label}
                 </p>
               </motion.div>
