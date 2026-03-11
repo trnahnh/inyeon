@@ -66,7 +66,7 @@ export default function Hero() {
           variants={itemVariants}
           className="text-4xl sm:text-5xl md:text-8xl font-bold mb-4 sm:mb-6 tracking-tight"
         >
-          <span className="gradient-text inline-flex">
+          <span className="gradient-text inline-flex pb-1 md:pb-2">
             {"Inyeon".split("").map((char, i) => (
               <motion.span
                 key={i}
