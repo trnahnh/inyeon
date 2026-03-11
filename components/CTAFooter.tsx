@@ -105,7 +105,8 @@ export default function CTAFooter() {
             <span className="text-zinc-800 hidden sm:inline">|</span>
             <a
               href="mailto:anhdtran.forwork@gmail.com"
-              className="text-zinc-600 hover:text-zinc-300 text-sm sm:text-base transition-colors break-all"
+              className="text-zinc-600 hover:text-zinc-300 text-sm sm:text-base transition-colors"
+              style={{ overflowWrap: "break-word" }}
             >
               anhdtran.forwork@gmail.com
             </a>

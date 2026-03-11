@@ -112,7 +112,7 @@ export default function Hero() {
         {/* Install snippet */}
         <motion.div
           variants={itemVariants}
-          className="mb-8 sm:mb-10 md:mb-14 max-w-md mx-auto px-4 sm:px-0"
+          className="mb-8 sm:mb-10 md:mb-14 max-w-xs sm:max-w-md mx-auto px-4 sm:px-0"
         >
           <button
             onClick={copyInstall}

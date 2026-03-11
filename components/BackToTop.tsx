@@ -24,16 +24,20 @@ export default function BackToTop() {
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.2 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-40 w-11 h-11 flex items-center justify-center cursor-pointer panel hud-corners"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 w-11 h-11 flex items-center justify-center cursor-pointer"
+          style={{
+            background:
+              "linear-gradient(135deg, #6b8db5 0%, #a08090 40%, #c4a35a 100%)",
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           <svg
-            className="w-4 h-4 text-zinc-500"
+            className="w-4 h-4 text-black"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth={1.5}
+            strokeWidth={2}
           >
             <path
               strokeLinecap="round"

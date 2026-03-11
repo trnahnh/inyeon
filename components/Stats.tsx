@@ -74,8 +74,8 @@ export default function Stats() {
         viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="panel hud-corners p-6 sm:p-8 md:p-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="panel hud-corners p-4 sm:p-8 md:p-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {stats.map((item, index) => (
               <motion.div
                 key={item.label}

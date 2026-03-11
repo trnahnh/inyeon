@@ -180,12 +180,12 @@ export default function WorkflowShowcase() {
           {autoCommands.map((item, i) => (
             <div
               key={i}
-              className="p-4 sm:p-5 bg-black group hover:bg-white/2 transition-colors"
+              className="p-3 sm:p-5 bg-black group hover:bg-white/2 transition-colors"
             >
-              <code className="text-warm-gold text-sm sm:text-base font-mono group-hover:text-cold-blue transition-colors">
+              <code className="text-warm-gold text-xs sm:text-sm font-mono group-hover:text-cold-blue transition-colors break-all">
                 {item.cmd}
               </code>
-              <p className="text-zinc-600 text-sm mt-2">{item.desc}</p>
+              <p className="text-zinc-600 text-xs sm:text-sm mt-2">{item.desc}</p>
             </div>
           ))}
         </motion.div>

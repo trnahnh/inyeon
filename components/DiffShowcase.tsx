@@ -236,12 +236,14 @@ export default function DiffShowcase() {
           ].map((item, i) => (
             <div
               key={i}
-              className="p-4 sm:p-5 bg-black group hover:bg-white/2 transition-colors"
+              className="p-3 sm:p-5 bg-black group hover:bg-white/2 transition-colors"
             >
-              <code className="text-cold-blue text-sm sm:text-base font-mono group-hover:text-warm-gold transition-colors">
+              <code className="text-cold-blue text-xs sm:text-sm font-mono group-hover:text-warm-gold transition-colors break-all">
                 {item.cmd}
               </code>
-              <p className="text-zinc-600 text-sm mt-2">{item.desc}</p>
+              <p className="text-zinc-600 text-xs sm:text-sm mt-2">
+                {item.desc}
+              </p>
             </div>
           ))}
         </motion.div>
