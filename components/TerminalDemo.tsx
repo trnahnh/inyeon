@@ -38,7 +38,11 @@ const terminalSequence: TerminalLine[] = [
     content: "[4/4] Generating PR description...",
     delay: 400,
   },
-  { type: "success", content: "Done! 3 commits created, PR ready.", delay: 600 },
+  {
+    type: "success",
+    content: "Done! 3 commits created, PR ready.",
+    delay: 600,
+  },
 ];
 
 function TypeWriter({
@@ -152,7 +156,7 @@ export default function TerminalDemo() {
       case "command":
         return (
           <div key={index} className="flex items-start gap-2">
-            <span className="text-aurora-purple flex-shrink-0">$</span>
+            <span className="text-aurora-purple shrink-0">$</span>
             {isActive ? (
               <TypeWriter
                 text={line.content}
@@ -221,7 +225,7 @@ export default function TerminalDemo() {
             className="flex items-center gap-2 text-aurora-green pl-4"
           >
             <svg
-              className="w-3 h-3 flex-shrink-0"
+              className="w-3 h-3 shrink-0"
               fill="currentColor"
               viewBox="0 0 20 20"
             >

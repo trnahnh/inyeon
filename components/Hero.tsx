@@ -119,9 +119,10 @@ export default function Hero() {
             className="w-full code-block flex items-center justify-between gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 cursor-pointer hover:border-aurora-purple/40 transition-colors group min-w-0"
           >
             <code className="text-[10px] sm:text-xs md:text-sm text-zinc-300 overflow-hidden text-ellipsis whitespace-nowrap block min-w-0">
-              <span className="text-aurora-purple">$</span> pip install git+https://github.com/suka712/inyeon-upstream.git
+              <span className="text-aurora-purple">$</span> pip install
+              git+https://github.com/suka712/inyeon-upstream.git
             </code>
-            <span className="text-zinc-500 group-hover:text-zinc-300 transition-colors flex-shrink-0">
+            <span className="text-zinc-500 group-hover:text-zinc-300 transition-colors shrink-0">
               {copied ? (
                 <svg
                   className="w-4 h-4 text-aurora-green"
@@ -248,7 +249,7 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-12 bg-gradient-to-b from-zinc-700 to-transparent"
+          className="w-px h-12 bg-linear-to-b from-zinc-700 to-transparent"
         />
       </motion.div>
     </section>

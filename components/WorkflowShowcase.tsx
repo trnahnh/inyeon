@@ -136,7 +136,7 @@ export default function WorkflowShowcase() {
 
                 {/* Arrow — sits between cards as a flex child, desktop only */}
                 {index < pipelineSteps.length - 1 && (
-                  <div className="hidden lg:flex items-center justify-center w-10 flex-shrink-0">
+                  <div className="hidden lg:flex items-center justify-center w-10 shrink-0">
                     <svg
                       className="w-4 h-4 text-zinc-400"
                       fill="none"
@@ -166,7 +166,7 @@ export default function WorkflowShowcase() {
           transition={{ duration: 0.6 }}
         >
           <div className="glass-card p-5 sm:p-6 border border-aurora-green/20 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="flex-shrink-0 w-1.5 h-10 bg-aurora-green rounded-full" />
+            <div className="shrink-0 w-1.5 h-10 bg-aurora-green rounded-full" />
             <div>
               <p className="text-aurora-green text-sm sm:text-base font-medium mb-1">
                 Cost-optimized short-circuits

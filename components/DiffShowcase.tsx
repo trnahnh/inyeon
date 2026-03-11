@@ -96,7 +96,7 @@ export default function DiffShowcase() {
             className="w-full"
           >
             <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
-              <div className="w-2 h-2 rounded-full bg-aurora-pink flex-shrink-0" />
+              <div className="w-2 h-2 rounded-full bg-aurora-pink shrink-0" />
               <span className="text-text-secondary text-xs sm:text-sm">
                 git diff
               </span>
@@ -145,14 +145,14 @@ export default function DiffShowcase() {
               className="w-full"
             >
               <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
-                <div className="w-2 h-2 rounded-full bg-aurora-cyan flex-shrink-0" />
+                <div className="w-2 h-2 rounded-full bg-aurora-cyan shrink-0" />
                 <span className="text-text-secondary text-xs sm:text-sm">
                   Generated Commit
                 </span>
               </div>
               <div className="code-block overflow-hidden aurora-glow w-full">
                 <div className="overflow-x-auto">
-                  <pre className="p-3 sm:p-4 text-xs sm:text-sm whitespace-pre-wrap break-words">
+                  <pre className="p-3 sm:p-4 text-xs sm:text-sm whitespace-pre-wrap wrap-break-word">
                     <code>
                       {commitMessage.split("\n").map((line, i) => {
                         let className = "text-zinc-400";
@@ -184,14 +184,14 @@ export default function DiffShowcase() {
               className="w-full"
             >
               <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
-                <div className="w-2 h-2 rounded-full bg-aurora-green flex-shrink-0" />
+                <div className="w-2 h-2 rounded-full bg-aurora-green shrink-0" />
                 <span className="text-text-secondary text-xs sm:text-sm">
                   AI Review
                 </span>
               </div>
               <div className="code-block overflow-hidden w-full">
                 <div className="overflow-x-auto">
-                  <pre className="p-3 sm:p-4 text-xs sm:text-sm whitespace-pre-wrap break-words">
+                  <pre className="p-3 sm:p-4 text-xs sm:text-sm whitespace-pre-wrap wrap-break-word">
                     <code>
                       {reviewOutput.split("\n").map((line, i) => {
                         let className = "text-zinc-400";
