@@ -6,6 +6,7 @@ const technologies = [
   "Python",
   "FastAPI",
   "LangGraph",
+  "OpenAI",
   "Gemini",
   "Ollama",
   "ChromaDB",

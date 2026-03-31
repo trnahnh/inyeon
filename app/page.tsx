@@ -11,6 +11,7 @@ import TerminalDemo from "@/components/TerminalDemo";
 import DiffShowcase from "@/components/DiffShowcase";
 import SplitShowcase from "@/components/SplitShowcase";
 import WorkflowShowcase from "@/components/WorkflowShowcase";
+import ProviderShowcase from "@/components/ProviderShowcase";
 import Features from "@/components/Features";
 import TechBadges from "@/components/TechBadges";
 import Stats from "@/components/Stats";
@@ -41,6 +42,7 @@ export default function Home() {
           <DiffShowcase />
           <SplitShowcase />
           <WorkflowShowcase />
+          <ProviderShowcase />
           <Features />
           <TechBadges />
           <Stats />

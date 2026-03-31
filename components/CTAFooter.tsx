@@ -123,7 +123,7 @@ export default function CTAFooter() {
         >
           <div className="section-line mb-6" />
           <p className="text-zinc-700 text-xs font-mono tracking-wider">
-            &copy; Inyeon {new Date().getFullYear()}
+            &copy; {new Date().getFullYear()} Inyeon. All rights reserved.
           </p>
         </motion.footer>
       </div>

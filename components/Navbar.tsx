@@ -7,6 +7,7 @@ const navLinks = [
   { label: "How it works", href: "#showcase" },
   { label: "Split", href: "#split" },
   { label: "Workflow", href: "#workflow" },
+  { label: "Providers", href: "#providers" },
   { label: "Features", href: "#features" },
 ];
 

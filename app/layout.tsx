@@ -17,12 +17,13 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Inyeon - Agentic AI Git Companion",
   description:
-    "Multi-agent AI assistant for git workflows. Split commits, resolve conflicts, generate PRs and changelogs with one command. Powered by Gemini and Ollama.",
+    "Multi-agent AI assistant for git workflows. Split commits, resolve conflicts, generate PRs and changelogs with one command. Powered by OpenAI, Gemini, and Ollama.",
   keywords: [
     "AI",
     "git",
     "commit",
     "LangGraph",
+    "OpenAI",
     "Gemini",
     "Ollama",
     "RAG",

@@ -40,6 +40,12 @@ const features = [
       "AI-powered insights on security, code quality, and patterns — runs inside auto pipeline",
     accentColor: "#10b981",
   },
+  {
+    title: "Multi-LLM Providers",
+    description:
+      "Switch between OpenAI, Gemini, and Ollama per-command or set a default via environment variable",
+    accentColor: "#a08090",
+  },
 ];
 
 export default function Features() {
