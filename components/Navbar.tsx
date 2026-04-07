@@ -67,7 +67,7 @@ export default function Navbar() {
                   setMenuOpen(false);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="gradient-text font-bold text-lg tracking-wide font-mono"
+                className="gradient-text font-bold text-lg tracking-tight"
               >
                 Inyeon
               </a>
