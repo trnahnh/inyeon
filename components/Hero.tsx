@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 
@@ -27,8 +27,38 @@ const itemVariants = {
   },
 };
 
+type HealthStatus = "loading" | "operational" | "degraded" | "down";
+
+function useHealthCheck() {
+  const [status, setStatus] = useState<HealthStatus>("loading");
+  const [version, setVersion] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("https://inyeon-upstream-production.up.railway.app/health", {
+      signal: controller.signal,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "healthy") {
+          setStatus("operational");
+        } else {
+          setStatus("degraded");
+        }
+        if (data.version) setVersion(data.version);
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) setStatus("down");
+      });
+    return () => controller.abort();
+  }, []);
+
+  return { status, version };
+}
+
 export default function Hero() {
   const [copied, setCopied] = useState(false);
+  const { status, version } = useHealthCheck();
 
   const scrollToDemo = () => {
     const demoSection = document.getElementById("showcase");
@@ -103,7 +133,7 @@ export default function Hero() {
         {/* Description */}
         <motion.p
           variants={itemVariants}
-          className="text-zinc-500 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed px-2"
+          className="text-zinc-500 text-sm sm:text-base md:text-lg mb-4 sm:mb-6 max-w-xl mx-auto leading-relaxed px-2"
         >
           Split commits, resolve conflicts, review code, and generate PRs &amp;
           changelogs — all in one command.
@@ -112,7 +142,7 @@ export default function Hero() {
         {/* Install snippet */}
         <motion.div
           variants={itemVariants}
-          className="mb-8 sm:mb-10 md:mb-14 max-w-xs sm:max-w-md mx-auto px-4 sm:px-0"
+          className="mb-4 sm:mb-6 md:mb-8 max-w-xs sm:max-w-md mx-auto px-4 sm:px-0"
         >
           <button
             onClick={copyInstall}
@@ -154,6 +184,57 @@ export default function Hero() {
               )}
             </span>
           </button>
+        </motion.div>
+
+        {/* Status indicator */}
+        <motion.div
+          variants={itemVariants}
+          className="mb-4 sm:mb-6 md:mb-8 flex justify-center"
+        >
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 border border-border text-[10px] sm:text-xs font-mono tracking-wide sm:tracking-wider">
+            {status === "loading" && (
+              <>
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-zinc-500" />
+                </span>
+                <span className="text-zinc-500">Checking status...</span>
+              </>
+            )}
+            {status === "operational" && (
+              <>
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <span className="text-emerald-500">
+                  All systems operational
+                </span>
+                {version && (
+                  <span className="text-zinc-600 ml-1 hidden sm:inline">
+                    v{version}
+                  </span>
+                )}
+              </>
+            )}
+            {status === "degraded" && (
+              <>
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
+                </span>
+                <span className="text-amber-500">Degraded performance</span>
+              </>
+            )}
+            {status === "down" && (
+              <>
+                <span className="relative flex h-2 w-2">
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+                </span>
+                <span className="text-red-500">Service unavailable</span>
+              </>
+            )}
+          </div>
         </motion.div>
 
         {/* CTAs */}

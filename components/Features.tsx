@@ -80,7 +80,7 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group w-full"
+              className={`group w-full ${index === features.length - 1 ? "sm:col-span-2 lg:col-span-3" : ""}`}
             >
               <TiltCard className="h-full">
                 <div className="p-5 sm:p-6 bg-black hover:bg-white/2 transition-colors h-full">

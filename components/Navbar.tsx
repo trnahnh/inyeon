@@ -73,7 +73,7 @@ export default function Navbar() {
               </a>
 
               {/* Desktop nav */}
-              <div className="hidden sm:flex items-center gap-8">
+              <div className="hidden sm:flex items-center gap-4 md:gap-8">
                 {navLinks.map((link) => (
                   <a
                     key={link.href}
