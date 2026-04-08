@@ -12,31 +12,35 @@ interface TerminalLine {
 const terminalSequence: TerminalLine[] = [
   { type: "command", content: "git add .", delay: 400 },
   { type: "command", content: "inyeon auto --staged", delay: 300 },
-  { type: "progress", content: "Running pipeline...", delay: 1600 },
   {
     type: "split-header",
-    content: "Pipeline: 4 steps",
-    delay: 100,
-  },
-  {
-    type: "box",
-    content: "[1/4] Splitting → 3 atomic commits",
+    content: "Streaming pipeline...",
     delay: 400,
   },
   {
     type: "box",
-    content: "[2/4] feat(auth): add session management",
-    delay: 400,
+    content: "✓ analyze_diff",
+    delay: 350,
   },
   {
     type: "box",
-    content: "[3/4] Reviewing code quality...",
-    delay: 400,
+    content: "✓ split_changes → 3 groups",
+    delay: 350,
   },
   {
     type: "box",
-    content: "[4/4] Generating PR description...",
-    delay: 400,
+    content: "✓ generate_commits",
+    delay: 350,
+  },
+  {
+    type: "box",
+    content: "✓ review_code — no issues found",
+    delay: 350,
+  },
+  {
+    type: "box",
+    content: "✓ generate_pr",
+    delay: 350,
   },
   {
     type: "success",

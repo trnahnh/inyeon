@@ -12,6 +12,8 @@ import DiffShowcase from "@/components/DiffShowcase";
 import SplitShowcase from "@/components/SplitShowcase";
 import WorkflowShowcase from "@/components/WorkflowShowcase";
 import ProviderShowcase from "@/components/ProviderShowcase";
+import StreamingShowcase from "@/components/StreamingShowcase";
+import LocalModeShowcase from "@/components/LocalModeShowcase";
 import Features from "@/components/Features";
 import TechBadges from "@/components/TechBadges";
 import Stats from "@/components/Stats";
@@ -43,6 +45,8 @@ export default function Home() {
           <SplitShowcase />
           <WorkflowShowcase />
           <ProviderShowcase />
+          <StreamingShowcase />
+          <LocalModeShowcase />
           <Features />
           <TechBadges />
           <Stats />

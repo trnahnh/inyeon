@@ -5,6 +5,18 @@ import TiltCard from "./TiltCard";
 
 const features = [
   {
+    title: "Real-Time Streaming",
+    description:
+      "SSE-powered live progress for all agent operations — watch reasoning steps and node completions as they happen",
+    accentColor: "#4a7cb5",
+  },
+  {
+    title: "Offline Mode",
+    description:
+      "Run agents directly in the CLI process with --local — no backend server needed, works with Ollama, Gemini, or OpenAI",
+    accentColor: "#c4a35a",
+  },
+  {
     title: "Full Workflow Automation",
     description:
       "Split, commit, review, and generate PRs in one command with inyeon auto",
@@ -14,31 +26,31 @@ const features = [
     title: "Atomic Commit Splitting",
     description:
       "Intelligently group changes into smaller, logical commits with 4 clustering strategies",
-    accentColor: "#4a7cb5",
+    accentColor: "#6b8db5",
   },
   {
     title: "AI Conflict Resolution",
     description:
       "Understands both sides of a merge conflict and produces clean, merged code",
-    accentColor: "#c4a35a",
+    accentColor: "#10b981",
   },
   {
     title: "Changelog Generation",
     description:
       "Groups commits by type with narrative summaries — write to file or stdout",
-    accentColor: "#6b8db5",
+    accentColor: "#6b7a8d",
   },
   {
     title: "RAG-Powered Context",
     description:
       "ChromaDB indexes your codebase for semantic understanding and smart retrieval",
-    accentColor: "#6b7a8d",
+    accentColor: "#a08090",
   },
   {
     title: "Smart Code Review",
     description:
       "AI-powered insights on security, code quality, and patterns — runs inside auto pipeline",
-    accentColor: "#10b981",
+    accentColor: "#6b8db5",
   },
   {
     title: "Multi-LLM Providers",
@@ -80,7 +92,7 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className={`group w-full ${index === features.length - 1 ? "sm:col-span-2 lg:col-span-3" : ""}`}
+              className="group w-full"
             >
               <TiltCard className="h-full">
                 <div className="p-5 sm:p-6 bg-black hover:bg-white/2 transition-colors h-full">
