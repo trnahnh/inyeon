@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Inyeon - Agentic AI Git Companion",
     description:
       "Multi-agent AI assistant for git workflows. Split commits, resolve conflicts, generate PRs and changelogs with one command.",
-    url: "https://inyeon-upstream.vercel.app",
+    url: "https://inyeon.cloud",
     siteName: "Inyeon",
     type: "website",
     locale: "en_US",
